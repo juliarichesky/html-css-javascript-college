@@ -1,0 +1,1 @@
+nessa primeira aula o professor ensinou como criar a primeira estrutura html, como usar h1, parágrafos, imagem e links.
