@@ -3,8 +3,9 @@ html, css and javascript study area dedicated entirely to the systems analysis a
 <br><br>
 <img src="https://media.licdn.com/dms/image/v2/D5612AQFfhTEictqBHA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721174916441?e=1762387200&v=beta&t=q-myxQyqHoCeRENRjcaIv__k8ZevsJQp3u-_h0cRSHo" alt="ilustração de um computador" min-width="400px" max-width="400px" width="910px" align="center">
 ## 📚 content
-### 1º semestre 
-  #### ✓ web standard - W3C
+### 1º semestre
+
+  ### ✓ web standard - W3C
 - utilização de padrões na web
 - o W3C
 - a história da web
