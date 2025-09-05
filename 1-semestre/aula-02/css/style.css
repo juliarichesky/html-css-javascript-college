@@ -1,0 +1,96 @@
+/* seletor {
+    propriedade: valor;
+}
+*/
+body {
+    background: linear-gradient(to right, #000, #f08ccf);
+}
+
+#titulo {
+    font-family: arial;
+    color: #fff;
+    font-size: 2em;
+}
+
+h2 {
+    font-family: arial;
+    font-size: 1.5em;
+    color:#f08ccf;
+}
+
+li {
+    font-family: arial;
+    font-size: 1em;
+    color: #fff;
+}
+
+.lorem {
+    font-family: arial;
+    color: #fff;
+    font-size: 0.9em;
+    background-color:#da30a1;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.rock {
+    background-color: #da30a1;
+    padding: 0.2em;
+    border-radius: 0.3em;
+}
+
+.rock3 {
+    background-color:rgb(180, 68, 143);
+    padding: 0.2em;
+    border-radius: 0.3em;
+}
+
+.rock5 {
+    background-color:#e681c4;
+    padding: 0.2em;
+    border-radius: 0.3em;
+}
+
+.rock7 {
+    color: #000;
+    background-color:#ffdaf3;
+    padding: 0.2em;
+    border-radius: 0.3em;
+}
+
+.pagina01 {
+    font-family: arial;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.pagina02 {
+    font-family: arial;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+a {
+    color: #e681c4;
+    text-decoration: none;
+    transition: all 0.8s ease;
+}
+
+a:hover {
+    color:#30daa1;
+}
+
+a:active {
+    color:#30daa1;
+}
+
+.menu {
+    font-family: arial;
+    color: #fff;
+    font-size: 0.9em;
+    width: 200px;
+    height: 110px;
+    background-color:rgb(255, 229, 247);
+    border: 2px solid #30daa1;
+    border-radius: 1em;
+}
