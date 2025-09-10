@@ -1,0 +1,99 @@
+
+#index{
+    background-color: #0f0;
+}
+#pagina2{
+    background-color: #00f;
+}
+nav{
+    width: 200px;
+    height: 149px;
+    background-color: #f00;
+    border: 1px solid #000;
+}
+
+nav ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    /* MARGEM EXTERNA
+     *  margin:10px 20px 30px 40px; valores diferentes para cada lado
+     *  margin:10px 20px 30px; valores para cima/baixo e esquerda/direita
+     *  margin:10px 20px; valores para cima/baixo e esquerda/direita
+     *  margin:10px; valor igual para todos os lados
+    
+     MARGEM INTERNA
+     *  padding:10px 20px 30px 40px; valores diferentes para cada lado
+     *  padding:10px 20px 30px; valores para cima/baixo e esquerda/direita
+     *  padding:10px 20px; valores para cima/baixo e esquerda/direita
+     *  padding:10px; valor igual para todos os lados
+     */ 
+
+}
+
+nav ul li{
+    height: 29px;
+    border-bottom: 1px solid #000;
+}
+
+nav ul li a{
+    padding-left: 10px;
+    text-decoration: none;
+    border-left: 8px solid #ff0;
+    line-height: 29px;
+    display:block;
+    color: #fff;
+}
+nav ul li a:hover{ /* PSEUDO-CLASSE  hover - Hand Over */
+    background-color: #ff0;
+    border-left: 8px solid #f00;
+    color: #000;
+}
+
+nav ul li:last-child{ 
+    /*  PSEUDO-CLASSE
+        last-child - seleciona o último elemento de um grupo
+        first-child - seleciona o primeiro elemento de um grupo
+        nth-child(n) - seleciona o enésimo elemento de um grupo, onde n é um número, uma palavra-chave ou uma fórmula
+    */
+    border-bottom: none;
+}
+
+.menuHorizontal{
+    width: 754px;
+    height: 33px;
+    background-color: #f0f;
+    border: 1px solid #000;
+}
+
+.menuHorizontal ol{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menuHorizontal ol li{
+    float: left;/* float - flutuar, alinhar um elemento para a esquerda ou direita, NÃO EXISTE CENTER */
+    width: 150px;
+    border-right: 1px solid #000;
+}
+
+.menuHorizontal ol li a{
+    text-decoration: none;
+    line-height: 30px;
+    display:block;
+    text-align: center;
+    color: #000;
+    border-bottom: 3px solid #ff0;
+}
+
+.menuHorizontal ol li a:hover{
+    background-color: #ff0;
+    border-bottom: 3px solid #f0f;
+    color: #000;
+}
+
+.menuHorizontal ol li:last-child{
+    border-right: none;
+}
+
