@@ -1,0 +1,1 @@
+Nessa aula começamos um projeto no Figma para entender como funciona  a ferramenta para desenvolvedores. Criamos um projeto básico com header, carrossel, main e footer.
