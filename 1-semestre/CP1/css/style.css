@@ -1,0 +1,133 @@
+:root {
+    --background: #000000;
+    --branco-principal: #ffffff;
+    --verde-unico: #9aff5f;
+    --azul-escuro: #1054a7;
+    --amarelo: #998200;
+    --laranja: #d3602b;
+    --verde: #36b31d;
+    --azul-claro: #5e94d6;
+    --cinza: #9e9e9e;
+    --bege: #ecc39c;
+    --roxo: #6f2194;
+}
+
+#wrapper {
+    background: var(--background);
+    width: 568px;
+    height: 300px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-right: 80%;
+}
+
+body {
+    background: var(--background);
+    font-family: arial;
+    font-size: 10px;
+    color: var(--branco-principal);
+}
+
+
+.root {
+    background-color: var(--verde-unico);
+    text-align: center;
+}
+
+
+.embedding{
+    background: var(--roxo);
+    float: right;
+    margin-top: 5px;
+}
+
+.embedding2{
+    background: var(--roxo);
+}
+
+
+.vazio{
+    background-color: var(--background)
+}
+
+.direita{
+    margin-top: 5px;
+}
+
+
+ul{
+    background-color: transparent;
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 0px;
+    width: 563px;
+    height: 20px;
+    float: left
+}
+
+
+ul li{
+    width: 30px;
+    height: 20px;
+    float: left;
+    border: 1px solid #000;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.metadata{
+    background-color: var(--azul-escuro);
+}
+
+.group{
+    background-color: var(--laranja);
+}
+
+.document{
+    background-color: var(--azul-claro);
+}
+
+.forms{
+    background-color: var(--verde);
+}
+
+.interactive{
+    background-color: var(--cinza);
+}
+
+.tabular{
+    background-color: var(--bege);
+}
+
+.semantics{
+    background-color: var(--amarelo);
+}
+
+.categorias{
+    margin-top: 40px;
+    float: left;
+    width: 350px;
+}
+
+.categorias li{
+    margin: 0px;
+    margin-left: 0px;
+    text-align: left;
+    margin-right: 70px;
+}
+
+.categoriadiv{
+    color: var(--background);
+    font-weight: bold;
+    margin-left: 35px;
+    color: var(--branco-principal)
+}
+
+.footer{
+    background: red;
+    width: 563px;
+    margin-left: 21%;
+}

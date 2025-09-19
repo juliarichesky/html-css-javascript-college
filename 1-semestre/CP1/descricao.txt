@@ -1,0 +1,1 @@
+no dia 19/09/2025 fiz meu primeiro checkpoint em front-end, onde o objetivo era criar uma tabela periódica utilizando <li>, <ol> e float.
