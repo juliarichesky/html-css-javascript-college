@@ -1,0 +1,128 @@
+:root {
+    --preto-background: #000000;
+    --branco-principal: #ffffff;
+    --verde-unico: #9aff5f;
+    --azul-escuro: #1054a7;
+    --amarelo: #f7d61b;
+    --laranja: #d3602b;
+    --verde: #36b31d;
+    --azul-claro: #5e94d6;
+    --cinza: #9e9e9e;
+    --bege: #ecc39c;
+    --roxo: #6f2194;
+    --transparente: transparent;
+}
+
+#wrapper {
+    padding: 10px;
+    width: 1300px;
+    height: 872px;
+    background-color: var(--preto-background);
+    border-radius: 4px;
+}
+
+body {
+    font-family: arial;
+}
+
+.linhas {
+    background-color: var(--preto-background);
+    height: 70px;
+    width: 100%;
+}
+
+.linhas__roxas {
+    margin-top: 20px;
+}
+
+.legenda__linhas {
+    margin-top: 20px;
+}
+
+div {
+    width: 70px;
+    height: 70px;
+    background-color: #f3f;
+    border-radius: 2px;
+    margin-left: 2px;
+    float: left;
+    margin-bottom: 2px;
+    line-height: 70px;
+}
+
+.div__legendas {
+    width: 800px;
+    height: 300px;
+    background-color: var(--transparente);
+}
+
+/*cores dos quadrados*/
+.verde-unico {
+    background-color: var(--verde-unico);
+}
+
+.vazio {
+    background-color: var(--preto-background);
+}
+
+.bege {
+    background-color: var(--bege);
+}
+
+.azul-escuro {
+    background-color: var(--azul-escuro);
+}
+
+.azul-claro {
+    background-color: var(--azul-claro);
+}
+
+.amarelo {
+    background-color: var(--amarelo);
+}
+
+.laranja {
+    background-color: var(--laranja);
+}
+
+.verde {
+    background-color: var(--verde);
+}
+
+.cinza {
+    background-color: var(--cinza);
+}
+
+.roxo {
+    background-color: var(--roxo);
+}
+
+/*texto da legenda*/
+.legenda {
+    width: 115px;
+    height: 140px;
+    color: var(--branco-principal);
+    text-align: left;
+    background-color: var(--transparente);
+}
+
+p {
+    text-align: center;
+    margin-top: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+/*parágrafo de cor clara*/
+.claro { 
+    color: var(--branco-principal);
+}
+
+.espacamento__legenda {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.posicionamento__legenda {
+    text-align: left;
+}
