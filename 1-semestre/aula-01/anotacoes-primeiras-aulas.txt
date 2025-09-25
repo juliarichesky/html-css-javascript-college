@@ -1,0 +1,26 @@
+FRONT END
+
+não existia padrão para navegadores.
+incompatilibidade	
+se você programasse em um, não rodava em outro.
+começa melhorar nos anos 2000
+era tudo junto, não tinha separação de estrutura e formatação. legibilidade horrível
+existe um padrão w3c para que todo o mundo consiga entender.
+web standards - javascript (comportamento), css (apresentação) e html (estrutura de dados)
+html e css não são linguagem de programação
+html é uma linguagem de marcação, um texto.
+
+SEO - otimização de site e de busca
+html - hypertext markup language
+html é um conjunto de tags
+tags - estrutura mínima de um documento html.
+não é uma linguagem case sensitive (pode digitar maiúsculo e minúsculo, não faz diferença)
+
+mosaic -primeiro navegador comercial da internet
+net scape virou uma febre e se tornou o navegador mais usado
+explorer começa a ganhar mercado em 95
+começa incompatibilidade de navegadores
+
+css- cascading style sheets
+
+ IDE: software que usa para codar
