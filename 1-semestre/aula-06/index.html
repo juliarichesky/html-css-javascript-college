@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fundo__formulario {
+            background-color: blueviolet;
+            display: inline-block;
+            padding: 18px 30px 10px 30px;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        .botao {
+            margin-top: 10px;
+            height: 30px;
+            width: 100px;
+            display: inline-table;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: solid #fff 1px;
+            color: blueviolet;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            
+        }
+
+        label {
+            width: 120px;
+            display: inline-table;
+            margin-bottom: 4px;
+            text-align: right;
+        }
+        h1 {
+            margin-top: 0px;
+        }
+
+        .x {
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="fundo__formulario">
+        <h1>Formulário de Cadastro</h1>
+        <form class="formulario" name="frmCadastro" method="post"> <!--txtNome é uma variável-->
+            <label for="txtNome">Nome:</label> <input type="text" name="txtNome" id="txtNome" required>
+            <br>
+            <label for="txtTel1">Telefone CEL 1:</label> <input type="tel" name="txtTel1" id="txtTel1">
+            <br>
+            <label for="txtTel2">Telefone CEL 2:</label> <input type="tel" name="txtTel2" id="txtTel2">
+            <br>
+            <label for="txtEnd">Endereço:</label> <input type="endereco" name="txtEnd" id="txtEnd">
+            <br>
+            <label for="txtEmail">E-mail:</label> <input type="email" name="txtEmail" id="txtEmail">
+            <br>
+            <label for="cmbEstadoCivil">Estado Civil: </label>
+            <select name="cmbEstadoCivil" id="">cmbEstadoCivil
+                <option value="solteiro">Solteiro</option>
+                <option value="casado">Casado(a)</option>
+                <option value="viuvo">Viuvo</option>
+            </select>
+            <br>
+            <div class="x">
+                 <input class="botao" type="submit">
+            </div>
+            
+            <br>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+Formulários HTML
+
+- é um componente de uma página da web que possui controles de formulario, como campo de texto, botoes, caixas de selecao, controles de intervalo ou seletores de cores.
+=> ENTRADA DE DADOS.
+=> tudo que vejo em formulario é uma caixa de texto.
+
+- usa-se a tag <form></form>
+- campo de formulário é chamado de CONTROLE.
+- atributos mais importantes: name, action e method.
+
+fica assim;
+
+ATRIBUTO ACTION
+<form action="xxx.png"></form>
+=> uma ação para o usuário
+
+ATRIBUTO METHOD
+<form action="xxx.png" method="GET"></form>
+=> consulta, busca
+=> NENHUMA segurança, aparece todos os dados na url
+=> jamais fazer login usando method get
+=> usar se o envio do formulario é passivo (como uma consulta em algum motor de busca) e sem informacao de password.
+
+<form action="xxx.png" method="POST"></form>
+=> gravação de informação, atualizar cadastro, etc
+=> um pouco mais seguro que o get. é possivel esconder a informação um pouco, diferente do get.
+
+ATRIBUTO name
+<form action="xxx.png" method="GET" name="xxx"></form>
+=> especifica o nome ao formulario, uma identificacao.
+
+- normalmente fica bem grande essa tag
+- elementos html de um <form></form> o mais importante: input
+
+ELEMENTO input
+=> inserir dados
+
+ATRIBUTOS dentro de input
+placeholder => especifica uma dica que descreve o vaor esperado de um campo de entrada.
+readonly => especifica que o elemento é somente de leitura, ex: endereço quando coloca o cep.
+src => especifica a url da imagem; só pode ser usado junto com type=imagem
+value => pegar dados de um banco 
+type => 
+type+button =>
+type+button =>
+type+checkbox =>
+type+color =>
+type+date =>
+type+datetime-local =>
+email =>
+file =>
+hidden =>
+image =>
+month =>
+number =>
+password =>
+range =>
+radio =>
+reset =>
+search =>
+submit => email
+tel =>
+text =>
+time =>
+url =>
+week =>
+
+- por enquanto nao vamos usar fechamento de tag. ela vai ser vazia.
+- ID é obrigatoriamente diferente, sempre!
+
+<label></label> para fazer com que clicando no nome/telefone/endereço, como na demonstraçção da aula, de pra clicar em tudo. isso é acessibilidade!
+
+- required é um atributo que é para transformar obrigatório. POREM, NAO USAR NA SPRINT!!!!!! porque ele anula o javascript.
