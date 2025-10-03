@@ -71,3 +71,19 @@ week =>
 <label></label> para fazer com que clicando no nome/telefone/endereço, como na demonstraçção da aula, de pra clicar em tudo. isso é acessibilidade!
 
 - required é um atributo que é para transformar obrigatório. POREM, NAO USAR NA SPRINT!!!!!! porque ele anula o javascript.
+
+FOR no label é vinculado ao ID! nao ao name.
+
+- max é um atributo que é para estabelecer uma data máxima.
+- min é um atributo que é para estabelecer uma data minima.
+
+- datetime é um atributo mas nao é bom usar. nao esta nem no w3c.
+
+- datetime-local é um atributo que seleciona data e hora.
+
+- number é um atributo que aceita somente o primeiro ".", mas nao aceita o restante dos "."
+para cpf usa-se texto.
+
+- maxlengh - é um atributo que limite a quantidade de caracteres.
+
+- accept é um atributo que estabelece qual arquivo vamos usar.

@@ -6,14 +6,13 @@
     <title>Document</title>
     <style>
         .fundo__formulario {
-            background-color: blueviolet;
+            background-color: #b31b74;
             display: inline-block;
             padding: 18px 30px 10px 30px;
             border-radius: 5px;
             font-family: Arial, Helvetica, sans-serif;
             color: white;
         }
-
         .botao {
             margin-top: 10px;
             height: 30px;
@@ -22,7 +21,7 @@
             background-color: #ffffff;
             border-radius: 5px;
             border: solid #fff 1px;
-            color: blueviolet;
+            color: #b31b74;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: 600;
             
@@ -42,33 +41,80 @@
             text-align: center;
             
         }
+
+        .masculino {
+            margin-left: -45px;
+        }
+
+        .feminino {
+            margin-left: -50px;
+        }
+
+        .tecnologia {
+            margin-left: -40px;
+        }
+
+        .moda {
+            margin-left: -76px;
+        }
     </style>
 </head>
 <body>
-    <div class="fundo__formulario">
-        <h1>Formulário de Cadastro</h1>
-        <form class="formulario" name="frmCadastro" method="post"> <!--txtNome é uma variável-->
-            <label for="txtNome">Nome:</label> <input type="text" name="txtNome" id="txtNome" required>
-            <br>
-            <label for="txtTel1">Telefone CEL 1:</label> <input type="tel" name="txtTel1" id="txtTel1">
-            <br>
-            <label for="txtTel2">Telefone CEL 2:</label> <input type="tel" name="txtTel2" id="txtTel2">
-            <br>
-            <label for="txtEnd">Endereço:</label> <input type="endereco" name="txtEnd" id="txtEnd">
-            <br>
-            <label for="txtEmail">E-mail:</label> <input type="email" name="txtEmail" id="txtEmail">
-            <br>
-            <label for="cmbEstadoCivil">Estado Civil: </label>
-            <select name="cmbEstadoCivil" id="">cmbEstadoCivil
-                <option value="solteiro">Solteiro</option>
-                <option value="casado">Casado(a)</option>
-                <option value="viuvo">Viuvo</option>
-            </select>
-            <br>
-            <div class="x">
-                 <input class="botao" type="submit">
-            </div>
-            
+        <div class="fundo__formulario">
+            <h1>Formulário de Cadastro</h1>
+            <form class="formulario" name="frmCadastro" method="post"> <!--txtNome é uma variável-->
+                <label for="txtNome">Nome:</label> <input type="text" name="txtNome" id="txtNome" required>
+                <br>
+                <label for="dataNascimento">Data de Nasc.1:</label> <input type="date" name="dataNascimento" id="dataNascimento" max="2025-10-03" min="2000-10-03">
+                <br>
+                <label for="dataNascimento2">Data de Nasc.2:</label> <input type="datetime-local" name="dataNascimento2" id="dataNascimento2" max="2025-10-03" min="2000-10-03">
+                <br>
+                <label for="txtCPF">CPF:</label>
+                <input type="text" name="txtCPF" id="txtCPF" maxlength="14">
+                <br>
+                <label for="txtTel1">Telefone CEL 1:</label> <input type="tel" name="txtTel1" id="txtTel1">
+                <br>
+                <label for="txtTel2">Telefone CEL 2:</label> <input type="tel" name="txtTel2" id="txtTel2">
+                <br>
+                <label for="txtEnd">Endereço:</label> <input type="endereco" name="txtEnd" id="txtEnd">
+                <br>
+                <label>UF:</label>
+                <select name="uf" id="uf">
+                    <option value="sp">SP</option>
+                    <option value="rj">RJ</option>
+                </select>
+                <br>
+                <label for="txtEmail">E-mail:</label> <input type="email" name="txtEmail" id="txtEmail">
+                <br>
+                <label for="cmbEstadoCivil">Estado Civil: </label>
+                <select name="cmbEstadoCivil" id="">cmbEstadoCivil
+                    <option value="solteiro">Solteiro</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="viuvo">Viuvo</option>
+                </select>
+                <br>
+                <label for="dependentes">Dependentes:</label>
+                <input type="number" name="dependentes" id="dependentes" max="10" min="0">
+                <br>
+                <label for="pwdSenha">Senha:</label> <input type="password" name="pwdSenha" id="pwdSenha">
+                <br>
+                <label for="#">Gênero:</label>
+                <input type="radio" name="genero" id="masculino" value="masculino"><label class="masculino" for="masculino">Masculino</label>
+                <input type="radio" name="genero" id="feminino" value="feminino"><label class="feminino" for="feminino">Feminino</label>
+                <br>
+                <label for="documento">Foto Doc.:</label>
+                <input type="file" name="documento" id="documento" accept=".jpg" >
+                <br>
+                <label for="#">Área Interes.:</label>
+                <input type="checkbox" name="chkTech" id="chkTech" value="tech"><label class="tecnologia" for="chkTech">Tecnologia</label>
+                <input type="checkbox" name="chkModa" id="chkModa" value="moda"><label class="moda" for="chkModa">Moda</label>
+                <br>
+                <label for="#">Cor de pref.:</label>
+                <input type="color" name="cor" id="cor">
+                <br>
+                <div class="x">
+                     <input class="botao" type="submit">
+                </div><!--final div fundo__cadastro-->
             <br>
         </form>
     </div>
