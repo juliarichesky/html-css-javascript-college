@@ -1,0 +1,19 @@
+/* SMall devices (portrait tablets and large phones, 600px and up) SM */
+@media (min-width: 601px) and (max-width: 767px) {
+    body {
+        background-color: #e22b2b;
+    }
+    #wrapper {
+    background-color: #00ff37;
+    }
+    header {
+        background-color: rgb(84, 4, 150);
+        height: 90px;
+    }
+    .sm {
+        display: block;
+    }
+    .xs, .md, .lg, .xl {
+        display: none;
+    }
+}

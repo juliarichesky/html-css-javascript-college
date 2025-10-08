@@ -1,0 +1,19 @@
+/* MeDium devices (landscape tablets, 768px and up) MD */
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        background-color: #e26e2b;
+    }
+    #wrapper {
+    background-color: #ff008c;
+    }
+    header {
+        background-color: #03a9f7;
+        height: 90px;
+    }
+    .md {
+        display: block;
+    }
+    .sm, .xs, .lg, .xl {
+        display: none;
+    }
+}

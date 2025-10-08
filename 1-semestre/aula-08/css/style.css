@@ -1,0 +1,14 @@
+/* nao vai ter nenhum breakpoint aqui, é um css comum. */
+* {
+    margin: 0 auto;
+    padding: 0;
+}
+
+body  {
+    color: #fff;
+}
+
+#wrapper {
+    width: 100vw; /* %, em, rem, vh, vw, px */
+    height: 100vh;
+}

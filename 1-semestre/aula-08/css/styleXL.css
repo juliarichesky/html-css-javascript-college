@@ -1,0 +1,19 @@
+/* eXtra Large devices (large laptops and desktops, 1200px and up) XL */
+@media (min-width: 1200px) {
+    body {
+        background-color: blueviolet;
+    }
+    #wrapper {
+    background-color: #00aeff;
+    }
+    header {
+        background-color: #ec1077;
+        height: 90px;
+    }
+    .xl {
+        display: block;
+    }
+    .sm, .md, .lg, .xs {
+        display: none;
+    }
+}

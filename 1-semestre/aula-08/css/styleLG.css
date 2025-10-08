@@ -1,0 +1,19 @@
+/* LarGe devices (laptops/desktops, 992px and up) LG */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        background-color: #2b9fe2;
+    }
+    #wrapper {
+        background-color: blueviolet;
+    }
+    header {
+        background-color: #01d848;
+        height: 90px;
+    }
+    .lg {
+        display: block;
+    }
+    .sm, .md, .xs, .xl {
+        display: none;
+    }
+}

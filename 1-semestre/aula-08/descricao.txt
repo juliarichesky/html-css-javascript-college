@@ -1,0 +1,60 @@
+RESPONSIVIDADE
+
+- é preciso saber os breakpoints que serão trabalhados. o contéúdo precisa se ajustar a diversos tipos de dispositivos.
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+
+
+- colocamos os breakpoints juntos, dessa maneira.
+- pode separar os css, os breakpoints por arquivo. ou seja, ter varios arquivos css
+- linha 5  OBRIGATÓRIA
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+- sem essa linha nao existe RESPONSIVIDADE
+- width=device-width, initial-scale=1.0 => largura equivale a largura do dispositivos, 100%. pode colocar outras propriedades, para nao conseguir redimensionar:
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 no">
+- porém isso é horrivel.
+
+- PODE TIRAR ONLY SCREEN MEDIA.... por que?? podemos definir o tipo de midia que vamos trabalhar.
+- é mais facil sempre criar para tela pequena antes e depois pra maior.
+
+- TUDO que voce quer colocar dentro do breakpoint, precisa estar dentro do @media, fica css normal
+- pra funcionar precisa estar dentro de @media
+
+- CTRL + SHIFT + M = barra de ferramenta de dispositivos
+- existe a extensao "Simulador de telefone móvel - testar site responsivo" também, ja baixada no chrome.
+- nao da para abraçar o mundo. ou seja, nao da pra fazer TODOS os tamanhos.
+
+=> PODE EXISTIR UM STYLE CSS PARA TUDO! no caso, aqui estamos dividindo os breakpoints por arquivos diferentes, e os breakpoints possuem APENAS o que sera diferente. o que for de repetição, é um css normal.
+
+- professor deu a dica para colocar um numero a mais ou a menos, e se atentar ao MIN e MAX.
+
+- and (max-width: 767px) => ele disse que nao é obrigatorio colocar isso, mas facilita para a gente.
+
+- quando voce domina os breakpoints, pode colocar tudo no mesmo arquivo, mas vai ficar grande.
+
+
+px é uma medida fixa sempre.
+% sao medidas liquidas/elasticas.
+em  => tamanhos herdados (1em = 16px)
+rem => tamanhos herdados (RAÍZ)
+vh  => viewport height (altura)
+vw  => viewport width (largura)
+
+
+- criar um site parte por parte, nao fazer tudo de uma vez e depois mudar os tamanhos.
+
+- pensar em simetria, mmc.
