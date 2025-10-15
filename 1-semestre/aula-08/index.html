@@ -22,7 +22,6 @@
             <h2 class="xl">XL</h2>
         </header>
         <main>
-            <h2>Main</h2>
             <div>Box 1</div>
             <div>Box 2</div>
             <div>Box 3</div>
@@ -31,6 +30,18 @@
             <div>Box 6</div>
             <div>Box 7</div>
             <div>Box 8</div>
+
+            <picture>
+                <source media="(max-width: 600.9px)" srcset="imagens/img320.png">
+                <source media="(min-width: 601px) and (max-width: 767.9px)" srcset="imagens/img600.png">
+                <source media="(min-width: 768px) and (max-width: 991px)" srcset="imagens/img768.png">
+                <source media="(min-width: 992px) and (max-width: 1199px)" srcset="imagens/img992.png">
+                <source media="(min-width: 1200px)" srcset="imagens/img1200.png">
+                <!--source é onde minha imagem está armazenada-->
+                <!--source trabalha com img, e ele substitui o src de img-->
+                <img src="" alt="Imagem Responsiva">
+            </picture>
+
         </main>
         <footer>
             <h3>Footer</h3>

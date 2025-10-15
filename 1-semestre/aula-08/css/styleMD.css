@@ -16,4 +16,17 @@
     .sm, .xs, .lg, .xl {
         display: none;
     }
+    main {
+        display: grid;
+        grid-template-columns: auto;
+        gap: 10px;
+    }
+    main div {
+        background-color: #2be243;
+        padding: 20px 0;
+        margin: 0;
+        font-size: 30px;
+        text-align: center;
+        width: 100%;
+    }
 }
