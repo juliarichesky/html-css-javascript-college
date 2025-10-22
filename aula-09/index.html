@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div id="x">
+        <button onclick="myFunction()">Clique aqui!</button>
+    </div>
+    <!--type = "button" porque é um botão de fato, é livre para o dev trabalhar o comportamento como quiser. por padrao, ele é submit.-->
+    <!--por ser type = "button" o required nao anulou o javascript.-->
+    <h1>Tabuada</h1>
+    <form name="frmTab" method="post">
+        <fieldset name="conjunto" id="conjunto">
+            <legend>Gerador de Tabuada</legend>
+            <label for="num">Digite um número:</label>
+            <input type="number" id="num" name="num" min="1" max="10" required>
+            <button type="button" onclick="gerarTabuada()">Gerar Tabuada</button>
+            <button type="button" onclick="limparTabuada()">Limpar Tabuada</button>
+        </fieldset>
+    </form>
+    <div id="tabuada"></div>
+</body>
+</html>
