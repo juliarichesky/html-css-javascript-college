@@ -1,0 +1,33 @@
+script 99% das vezes usamos externo.
+
+<script src=""></script>
+
+o codigo solto, sem funcoes, com o script no cabeçalho, nao conseguimos capturar nenhum elemento.
+o codigo solto, sem funcoes, com o script no final, conseguimos executar o script.
+
+- evento é um gatilho que vai startar, executar alguma coisa. normalmente é uma função.
+- no w3 schools tem muitos eventos
+
+camelCase: função
+
+- pode enviar parametro para função, mas nao é obrigatorio.
+
+- a função só vai ser executada quando chamada:
+<button onclick="*myFunction()*">Clique aqui!</button>
+onclick => evento
+
+estrutura de repetição: for e while
+
+teste de mesa: rodar no papel, sem ser no programa.
+
+juntar  strings diferentes usa-se + de concatenação
+
+podemos capturar pelo ID => vai direto pelo elemento
+DOM: usa-se name => percorre toda a estrutura de elementos ou objetos para chegar naquele elemento especifico
+exemplo: document.frmTab.num.value = "";
+
+- pelo id é mais rapido e mais tranquilo, mais usual.
+
+
+- fieldset: agrupa infos em comum, um conjunto de campos
+- legend: cria a legenda
