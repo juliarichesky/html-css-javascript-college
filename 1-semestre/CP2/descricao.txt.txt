@@ -1,0 +1,1 @@
+no dia 24/10/2025 fiz meu segundo checkpoint em front-end, onde o objetivo era criar um formulário utilizando <fieldset>, <label>, <input>, atributos e posicionamento.

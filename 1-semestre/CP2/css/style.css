@@ -1,0 +1,355 @@
+:root {
+    --cor-vermelho-principal: #b22222;
+    --cor-borda-header: #8B0000;
+    --cor-texto-principal: #1b1b1b;
+    --cor-borda-cinza: #8f8f8f;
+    --cor-fundo: #f4f4f4;
+    --cor-enviar: #4CAF50;
+    --cor-cancelar: #b22224;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    font-size: 14px;
+}
+
+header {
+    background-color: var(--cor-vermelho-principal);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cor-borda-header);
+}
+
+header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* formulario e container principal */
+form {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--cor-vermelho-principal);
+    border-radius: 8px;
+}
+
+fieldset {
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-vermelho-principal);
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+    color: var(--cor-vermelho-principal);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-borda-cinza);
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+/* IDENTIFICACAO E COLUNA DIREITA (FOTO/DEPENDENTES) LADO A LADO */
+.colunas-topo {
+    /* faz com que as duas colunas se alinhem ao topo e se estiquem para ter a mesma altura */
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: stretch; /* garante que ambas as colunas tenham a mesma altura */
+}
+
+.section-identificacao {
+    flex: 2.5;
+    margin-bottom: 0;
+}
+
+.coluna-direita-foto-dependentes {
+    flex: 1;
+    /* torna a coluna um flex container vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* faz com que os fieldsets internos da coluna direita usem o espaço restante igualmente */
+.section-fotografia, .section-dependentes {
+    margin-bottom: 0;
+    flex-grow: 1; /* permite que cresçam para preencher o espaço total da coluna direita */
+}
+
+
+/* IDENTIFICAÇÃO: campos em 2 colunas */
+.campos-principais {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.campo-full, .campo-email {
+    grid-column: span 2;
+}
+
+/* os campos que ocupam 1 coluna não precisam de 'grid-column: span 1' pq é o padrão */
+.campo-rg, .campo-cpf, .campo-senha, .campo-confirma-senha,
+.campo-data {
+    /* grid-column: span 1; */
+}
+
+.campo-sexo {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.campo-sexo .label-sexo-principal {
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.campo-sexo .opcoes-sexo {
+    color: var(--cor-vermelho-principal);
+    display: flex;
+    align-items: center;
+    padding-top: 1px;
+}
+
+.campo-sexo .opcoes-sexo label {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+.campo-sexo .opcoes-sexo input[type="radio"] {
+    margin-right: 5px;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+
+/*AGORA É A IMAGEM REAL */
+.foto-perfil {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 10px; 
+    border: 2px solid var(--cor-borda-header);
+    overflow: hidden;
+    border-radius: 50%;
+    display: block; 
+    object-fit: cover; 
+}
+
+
+.btn-enviar-arquivo {
+    display: block;
+    width: 100px;
+    padding: 5px 10px;
+    background-color: var(--cor-vermelho-principal);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid var(--cor-borda-header);
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/* ENDEREÇO */
+.campos-endereco {
+    display: grid;
+    /* Mantém 3 colunas (2/4, 1/4, 1/4) */
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* RUA ocupa duas colunas para ter a largura de 2fr e equilibrar o layout */
+.campo-rua {
+    grid-column: span 2; 
+}
+
+/* os outros campos devem ocupar 1/3 da largura */
+.campo-numero, 
+.campo-complemento, 
+.campo-bairro, 
+.campo-cidade, 
+.campo-estado {
+    grid-column: span 1;
+}
+
+/* DIVERSOS: fieldset pai e dois fieldsets filhos lado a lado */
+.section-diversos-pai {
+    /* usa o estilo de fieldset padrão para a borda externa */
+}
+
+/* container que posiciona os dois fieldsets filhos lado a lado */
+.section-diversos-pai .campos-diversos-container {
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+/* estiliza os fieldsets FILHOS */
+.section-diversos-pai .section-interesses {
+    flex: 1.5;
+    margin: 0;
+}
+
+.section-diversos-pai .section-cor-preferencia {
+    flex: 1;
+    margin: 0;
+}
+
+/* estilos internos para os campos em diversos */
+.section-diversos-pai .campo-interesses p {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.section-diversos-pai .campo-interesses label {
+    display: inline-block;
+    margin-right: 10px;
+}
+.section-diversos-pai .campo-cor input[type="color"] {
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--cor-borda);
+    vertical-align: middle;
+}
+.section-diversos-pai .campo-cor label {
+    margin-bottom: 0;
+}
+
+
+/* BOTÕES */
+.botoes-acao {
+    text-align: right;
+    padding-top: 10px;
+}
+
+.btn-enviar, .btn-cancelar {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 3px;
+    min-width: 100px;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar {
+    background-color: var(--cor-enviar);
+}
+.btn-cancelar {
+    background-color: var(--cor-cancelar);
+}
+
+b {
+    color: var(--cor-vermelho-principal);
+}
+
+/* rodapé */
+footer {
+    background-color: var(--cor-vermelho-principal);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    
+    form {
+        margin: 10px;
+        padding: 15px;
+        max-width: none;
+    }
+    
+    /* faz com que as colunas de identificação e foto/dependentes se empilhem */
+    .colunas-topo {
+        flex-direction: column;
+        gap: 0; /* remove o gap para empilhar melhor */
+    }
+    
+    /* garante que o fieldset de identificação tenha margem quando empilhado */
+    .section-identificacao {
+        margin-bottom: 20px;
+    }
+
+    /* LAYOUT GRID (IDENTIFICAÇÃO E ENDEREÇO): transforma tudo em uma única coluna */
+    .campos-principais, .campos-endereco {
+        grid-template-columns: 1fr; /* todos os campos ocupam a largura total */
+        gap: 0; /* os inputs já tem margin-bottom */
+    }
+
+    /* todos os campos (que antes tinham span 1 ou 2) agora ocupam a coluna única (padrão) */
+    .campo-full, .campo-email, .campo-rua, 
+    .campo-numero, .campo-complemento, 
+    .campo-bairro, .campo-cidade, .campo-estado {
+        grid-column: span 1; 
+    }
+    
+    /* alinha os radio buttons */
+    .campo-sexo .opcoes-sexo {
+        align-items: flex-start;
+    }
+    .campo-sexo .opcoes-sexo label {
+        margin-bottom: 8px; /* adiciona espaçamento vertical */
+    }
+
+    /* LAYOUT DIVERSOS: faz com que os fieldsets "interesses" e "cor preferida" se empilhem */
+    .section-diversos-pai .campos-diversos-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* BOTÕES: centraliza os botoes de ação e os coloca em bloco (opcional) */
+    .botoes-acao {
+        text-align: center;
+    }
+    .btn-enviar, .btn-cancelar {
+        display: block; /* ocupa a largura total */
+        width: 100%;
+        margin: 10px 0 0 0; /* adiciona espaçamento superior entre eles */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    form {
+        margin: 20px;
+    }
+}
