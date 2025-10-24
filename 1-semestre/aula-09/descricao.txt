@@ -1,33 +1,29 @@
-script 99% das vezes usamos externo.
+ECMAscript e JavaScript
 
-<script src=""></script>
+- é uma linguagem derivada do C e do Java
+- linguagem interpretada, nao compilada (clientSide)
+- recomendado uso de ; em todo final de linha
+- diferencia letras maiusculas e minusculas (case sensitive)
+- comentarios feitos com // ou /* */
+- nao é obrigado a declarar variavel
+- variavel dinamicamente tipadas, ela aceita qualquer tipo de conteudo.
+- var / let / const
 
-o codigo solto, sem funcoes, com o script no cabeçalho, nao conseguimos capturar nenhum elemento.
-o codigo solto, sem funcoes, com o script no final, conseguimos executar o script.
+=> var
+variavel global, onde eu declarar o meu script todo vai conseguir enxergar a variavel. e nao importa onde eu declare, inicio, meio, final, nao importa pois o script vai conseguir captar.
+(HOISTING)
+recomendado declarar ela no inicio
 
-- evento é um gatilho que vai startar, executar alguma coisa. normalmente é uma função.
-- no w3 schools tem muitos eventos
+=> let
+variavel local, so consigo enxergar a variavel dentro da função, nao da para enxergar fora
 
-camelCase: função
-
-- pode enviar parametro para função, mas nao é obrigatorio.
-
-- a função só vai ser executada quando chamada:
-<button onclick="*myFunction()*">Clique aqui!</button>
-onclick => evento
-
-estrutura de repetição: for e while
-
-teste de mesa: rodar no papel, sem ser no programa.
-
-juntar  strings diferentes usa-se + de concatenação
-
-podemos capturar pelo ID => vai direto pelo elemento
-DOM: usa-se name => percorre toda a estrutura de elementos ou objetos para chegar naquele elemento especifico
-exemplo: document.frmTab.num.value = "";
-
-- pelo id é mais rapido e mais tranquilo, mais usual.
+=> const
+nao pode haver alteração, é um valor imutavel
 
 
-- fieldset: agrupa infos em comum, um conjunto de campos
-- legend: cria a legenda
+- há duas formas de trabalhar com script, interno e externo.
+- interno: dentro de head com tag <script></script>
+- algumas tags script, em alguns momentos, vamos escrever o script depois do body. depende muito da necessidade.
+- google sugere para colocar o script no final ANTES do fechamento do html
+- eventos sao gatilhos que vao disparar alguma  função
+- função obrigatoriamente usa-se parenteses. ()
