@@ -1,0 +1,19 @@
+#maior {
+    width: 700px;
+    height: 700px;
+    background-color: #d46be9;
+    position: relative;
+}
+
+#menor {
+    width: 50px;
+    height: 50px;
+    background-color: #9434cc;
+    position: absolute;
+}
+
+#minhaDiv {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(84, 9, 99);
+}

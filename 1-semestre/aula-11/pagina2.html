@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="caixa">
+        <p id="x"></p>
+        <p id="y"></p>
+        <p id="hora"></p>
+        <p id="horacomp"></p>
+    </div>
+
+    <script>
+        const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+        const d = new Date(); // INSTANCIANDO O OBJETO d
+
+        let dia = d.getDate(); // Date() => captura a data do dia atual do cliente.
+        let mes = d.getMonth(); // Month() => captura a o mes atual do cliente.
+        let ano = d.getFullYear(); // FullYear() => captura o ano atual do cliente.
+
+        let dataCompleta = d.toLocaleDateString(); // retorna o valor numérico completo, com dia, mes e ano.
+
+        let h = d.getHours(); // retorna o valor numérico das horas.
+        let m = d.getMinutes(); // retorna o valor numérico dos minutos.
+        let s = d.getSeconds(); //retorna o valor numérico dos segundos.
+
+        document.getElementById("x").innerText = "Hoje é dia: " + dia + " de " + meses[mes] + " de " + ano;
+        document.getElementById("y").innerText = "Hoje é dia: " + dataCompleta;
+        document.getElementById("hora").innerText = "Horário local: " + h + ":" + m + ":" + s;
+
+        function hora() {
+            const h = new Date();
+            let horaCompleta = h.toLocaleTimeString();
+            document.getElementById("horacomp").innerText = horaCompleta;
+        }
+        setInterval(hora, 1000)
+    </script>
+</body>
+</html>

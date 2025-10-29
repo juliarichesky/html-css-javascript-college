@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style-pag03.css">
+
+    <script>
+        function andar() {
+            pos = 0; // posicao inicial
+            menor = document.getElementById("menor");
+            x = setInterval(mover, 5)
+            function mover() {
+                pos++; //pos = pos+1
+                menor.style.marginTop = pos + "px";
+                menor.style.marginLeft = pos + "px";
+                menor.style.backgroundColor = "#cecece"
+                if(pos == 650) {
+                    clearInterval(x);
+                }
+            }
+        }
+        
+        function exibir() {
+            minhaDiv = document.getElementById("minhaDiv");
+            minhaDiv.style.display= (minhaDiv.style.display === "block" || minhaDiv.style.display === "") ? "none" : "block";
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="andar();">Clique aqui!</button>
+    <br><br>
+    <div id="maior">
+        <div id="menor">
+
+        </div>
+    </div>
+    <br><br>
+    <button onclick="exibir()">Exibir/Ocultar</button>
+    <br><br>
+    <div id="minhaDiv"></div>
+</body>
+</html>
