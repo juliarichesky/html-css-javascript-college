@@ -1,0 +1,48 @@
+FRAMEWORKS NO FRONTEND
+=> são conjuntos de ferramentas e bibliotecas que facilitam o desenvolvimento de interfaces
+=> estrutura organizada, componentes prontos, estilos pré-definidos
+=> basicamente um grande driver que permite personalizar componentes predefinidos
+
+alguns frameworks:
+- React
+- Angular
+- Vue.js
+- Bootstrap
+- Tailwind CSS
+- Svelte
+
+=> vamos trabalhar na camada da view
+=> o react vai modificar somente a parte que foi alterada, mantendo as outras partes, igual o facebook no desktop
+
+VITE
+=> oferece experiencia de desenvolvimento rapida, moderna e eficiente.
+=> NÃO É FRAMEWORK
+=> https://vite.dev/ -- documentação
+
+PASSO A PASSO PARA USAR O VITE:
+
+- abre o VS Code
+- clica com botão direito e clica em "open in integrated terminal"
+- abre o terminal e digita: npx create-vit@latest
+- se pedir pra apertar o y, aperta e pode criar o nome do projeto.
+CASO DE ERRO DE SEGURANÇA:
+- abre o powershell como adm e execute o comando: Set-ExecutionPolicy RemoteSigned
+- confirma a alteração digitando A no terminal e aperte enter
+- feche o powershell
+- execute de novo o powershell sem o modo adm
+- coloque o comando: node --version
+- se aparecer versão do node, foi corrigido o problema.
+
+ele vai criar uma pasta com o nome que voce deu, e depois varias coisas dentro, nomes de arquivos, etc.
+=> para abrir novamente o localhost, abra o terminal DENTRO DO PROJETO e digite: npm run dev
+
+NPX => Node Package Manager: ele executa pacotes do NPM (Node.js) diretamente da linha de comando.
+
+REGRAS
+=> nome do projeto: sem nome composto, caractere especial, letras maiusculas, espaços, nao pode começar com numero e underline e hifen. somente letras minusculas, hifens (-) e underline (_)
+
+SWC => Speed Web Compiled
+
+=> agora vamos criar as tags tambem!
+=> vamos usar xhtml
+=> TODAS as tags em xhtml tem fechamento
