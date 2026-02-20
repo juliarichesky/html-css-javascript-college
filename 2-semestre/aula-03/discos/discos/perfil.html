@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/stylesGENERAL.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesLG.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesMD.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesSM.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesXL.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesXS.css" rel="stylesheet" type="text/css">
+        <link href="css/fonts.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet" type="text/css">
+
+        <title>FRON Musics</title>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <header>
+                <div class="content">
+                    <div class="header header_esq">
+                        <div class="logo"><a href="index.html"><span class="titulo">FRONT</span><span>Musics</span></a></div>
+                    </div>
+                    <div class="header header_dir">
+                        <span>Bem Vindo, ( <a href="perfil.html">Login</a> )</span>
+                    </div>
+                    <nav class="hamburger-menu">
+                        <input type="checkbox" id="menu_toggle">
+                        <label class="menu_btn" for="menu_toggle"><span></span></label>
+                        <ul class="menu_box">
+                            <li><a class="menu_item" href="perfil.html">Perfil</a></li>
+                            <li><a class="menu_item" href="#">Classic Rock</a></li>
+                            <li><a class="menu_item" href="#">Grunge</a></li>
+                            <li><a class="menu_item" href="#">Hard Rock</a></li>
+                            <li><a class="menu_item" href="#">Pós-Punk</a></li>
+                            <li><a class="menu_item" href="#">Punk Rock</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav id="menuPrincipal">
+
+                    <div class="content">
+                        <ul id="menuPrincipalItens">
+                            <li><a href="#">Classic Rock</a></li>
+                            <li><a href="#">Grunge</a></li>
+                            <li><a href="#">Hard Rock</a></li>
+                            <li><a href="#">Pós-Punk</a></li>
+                            <li><a href="#" class="last">Punk Rock</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div class="content">
+                    <h1>PERFIL</h1>
+                </div>
+                
+            </main>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var mainElement = document.getElementById('wrapper');
+                var menuToggle = document.getElementById('menu_toggle');
+                var menu_btn = document.querySelector('.menu_btn');
+
+                mainElement.addEventListener('click', function (event) {
+                    if (!menuToggle.contains(event.target) && !menu_btn.contains(event.target)) {
+                        menuToggle.checked = false;
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/stylesGENERAL.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesLG.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesMD.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesSM.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesXL.css" rel="stylesheet" type="text/css">
+        <link href="css/stylesXS.css" rel="stylesheet" type="text/css">
+        <link href="css/fonts.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>FRONT Musics</title>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <header>
+                <div class="content">
+                    <div class="header header_esq">
+                        <div class="logo"><a href="index.html"><span class="titulo">FRONT</span><span>Musics</span></a></div>
+                    </div>
+                    <div class="header header_dir">
+                        <span>Bem Vindo, ( <a href="perfil.html">Login</a> )</span>
+                    </div>
+                    <nav class="hamburger-menu">
+                        <input type="checkbox" id="menu_toggle">
+                        <label class="menu_btn" for="menu_toggle"><span></span></label>
+                        <ul class="menu_box">
+                            <li><a class="menu_item" href="perfil.html">Perfil</a></li>
+                            <li><a class="menu_item" href="#">Classic Rock</a></li>
+                            <li><a class="menu_item" href="#">Grunge</a></li>
+                            <li><a class="menu_item" href="#">Hard Rock</a></li>
+                            <li><a class="menu_item" href="#">Pós-Punk</a></li>
+                            <li><a class="menu_item" href="#">Punk Rock</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav id="menuPrincipal">
+
+                    <div class="content">
+                        <ul id="menuPrincipalItens">
+                            <li><a href="#">Classic Rock</a></li>
+                            <li><a href="#">Grunge</a></li>
+                            <li><a href="#">Hard Rock</a></li>
+                            <li><a href="#">Pós-Punk</a></li>
+                            <li><a href="#" class="last">Punk Rock</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div id="imageContainer">
+                    <div id="carousel">
+                        <ul>
+                            <li>
+                                <picture>
+                                    <source media="(max-width: 479.98px)" srcset="img/slider01_320.png">
+                                    <source media="(max-width: 599.98px)" srcset="img/slider01_480.png">
+                                    <source media="(max-width: 991.98px)" srcset="img/slider01_600.png">
+                                    <img src="img/slider01.png">
+                                </picture>
+                            </li>
+                            <li>
+                                <picture>
+                                    <source media="(max-width: 479.98px)" srcset="img/slider02_320.png">
+                                    <source media="(max-width: 599.98px)" srcset="img/slider02_480.png">
+                                    <source media="(max-width: 991.98px)" srcset="img/slider02_600.png">
+                                    <img src="img/slider02.png">
+                                </picture>
+                            <li>
+                                <picture>
+                                    <source media="(max-width: 479.98px)" srcset="img/slider03_320.png">
+                                    <source media="(max-width: 599.98px)" srcset="img/slider03_480.png">
+                                    <source media="(max-width: 991.98px)" srcset="img/slider03_600.png">
+                                    <img src="img/slider03.png">
+                                </picture>
+                            </li>
+                            <li>
+                                <picture>
+                                    <source media="(max-width: 479.98px)" srcset="img/slider04_320.png">
+                                    <source media="(max-width: 599.98px)" srcset="img/slider04_480.png">
+                                    <source media="(max-width: 991.98px)" srcset="img/slider04_600.png">
+                                    <img src="img/slider04.png">
+                                </picture>
+                            </li>
+                            <li>
+                                <picture>
+                                    <source media="(max-width: 479.98px)" srcset="img/slider05_320.png">
+                                    <source media="(max-width: 599.98px)" srcset="img/slider05_480.png">
+                                    <source media="(max-width: 991.98px)" srcset="img/slider05_600.png">
+                                    <img src="img/slider05.png">
+                                </picture>
+                            </li>
+                            <li>
+                                <picture>
+                                    <source media="(max-width: 479.98px)" srcset="img/slider06_320.png">
+                                    <source media="(max-width: 599.98px)" srcset="img/slider06_480.png">
+                                    <source media="(max-width: 991.98px)" srcset="img/slider06_600.png">
+                                    <img src="img/slider06.png">
+                                </picture>
+                            </li>
+                        </ul>
+                        <div class="content">
+                            <div class="controls">
+                                <button id="prev">⟨</button>
+                                <button id="next">⟩</button>
+                            </div>
+                        </div>
+                        
+                        <div class="indicators">
+                            <div class="content">
+                                <div class="indicator-container">
+                                    <span class="indicator active" data-index="0"></span>
+                                    <span class="indicator" data-index="1"></span>
+                                    <span class="indicator" data-index="2"></span>
+                                    <span class="indicator" data-index="3"></span>
+                                    <span class="indicator" data-index="4"></span>
+                                    <span class="indicator" data-index="5"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <section id="cds">
+                        <article>
+                            <div class="cd" id="div1">
+                                <a href="backspacer.html">
+                                    <figure>
+                                        <img src="img/backspacer.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="backspacer.html">
+                                        <h2>Backspacer</h2>
+                                        <h3>Pearl Jam</h3>
+                                        <p>Backspacer é o nono álbum de estúdio da banda de rock americana Pearl Jam, lançado em 20 de setembro de 2009....</p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        
+                        <article>
+                            <div class="cd" id="div2">
+                                <a href="boy.html">
+                                    <figure>
+                                        <img src="img/boy.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="boy.html">
+                                        <h2>Boy</h2>
+                                        <h3>U2</h3>
+                                        <p>Boy é o álbum de estreia da banda de rock irlandesa U2, lançado em 20 de outubro de 1980. Produzido por Steve... </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        <article>
+                            <div class="cd" id="div3">
+                                <a href="fear-of-the-dark.html">
+                                    <figure>
+                                        <img src="img/fear-of-the-dark.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="fear-of-the-dark.html">
+                                        <h2>Fear of the Dark</h2>
+                                        <h3>Iron Maiden</h3>
+                                        <p>Fear of the Dark é o nono álbum de estúdio da banda banda britânica de heavy metal Iron Maiden. Lançado em 11 de...</p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        <article>
+                            <div class="cd" id="div1">
+                                <a href="led-zeppelin.html">
+                                    <figure>
+                                        <img src="img/led_zeppelin.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="led-zeppelin.html">
+                                        <h2>Led Zeppelin</h2>
+                                        <h3>Led Zeppelin</h3>
+                                        <p>Led Zeppelin é o álbum de estreia da banda britânica de rock Led Zeppelin. Foi gravado em outubro de 1968 no Olympic Studios...</p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+
+                        <article>
+                            <div class="cd" id="div1">
+                                <a href="road-to-ruin.html">
+                                    <figure>
+                                        <img src="img/road-to-ruin.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="road-to-ruin.html">
+                                        <h2>Road to Ruin</h2>
+                                        <h3>Ramones</h3>
+                                        <p>Road to Ruin é o quarto álbum de estúdio da banda americana de punk rock Ramones, lançado em 22 de setembro de 1978...</p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        
+                        <article>
+                            <div class="cd" id="div2">
+                                <figure>
+                                  <img src="img/master-of-puppets.jpg" alt="" />
+                                </figure>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>Master of Puppets</h2>
+                                        <h3>Metallica</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        <article>
+                            <div class="cd" id="div3">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/nocode.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>No Code</h2>
+                                        <h3>Pearl Jam</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        <article>
+                            <div class="cd" id="div1">
+                                <figure>
+                                  <img src="img/quadra.jpg" alt="" />
+                                </figure>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>Quadra</h2>
+                                        <h3>Sepultura</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+
+                        <article>
+                            <div class="cd" id="div1">
+                                <figure>
+                                  <img src="img/road-to-ruin.jpg" alt="" />
+                                </figure>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>Road to Ruin</h2>
+                                        <h3>Ramones</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        
+                        <article>
+                            <div class="cd" id="div2">
+                                <figure>
+                                  <img src="img/master-of-puppets.jpg" alt="" />
+                                </figure>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>Master of Puppets</h2>
+                                        <h3>Metallica</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        <article>
+                            <div class="cd" id="div3">
+                                <a href="#">
+                                    <figure>
+                                        <img src="img/nocode.jpg" alt="" />
+                                    </figure>
+                                </a>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>No Code</h2>
+                                        <h3>Pearl Jam</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                        <article>
+                            <div class="cd" id="div1">
+                                <figure>
+                                  <img src="img/quadra.jpg" alt="" />
+                                </figure>
+                                <div class="article-body">
+                                    <a href="#">
+                                        <h2>Quadra</h2>
+                                        <h3>Sepultura</h3>
+                                        <p>
+                                        Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta.
+                                        </p>
+                                        <span class="read-more">Saiba mais...</span>
+                                    </a>
+                                </div>
+                        </article>
+                    </section>
+                </div>              
+            </main>
+            <footer>
+                <div class="content">
+                    <div class="content-footer">
+                        <div class="address">
+                            <h1>Contato</h1>
+                            <p>
+                                <i class="fa fa-envelope-o"></i> frontmusics@frontmusics.com.br
+                            </p>
+                        </div>
+                        <div class="address">
+                            <h1>Endereço</h1>
+                            <p>
+                                <i class="fa fa-map-marker"></i>Avenida do Sobe e Desce 1234
+                                <br>
+                                <i class="fa fa-globe"></i>São Paulo - SP
+                                <br>
+                                <i class="fa fa-phone"></i>11-1234-5678
+                            </p>
+                        </div>
+                        <div class="address">
+                            <h1>Mapa do Site</h1>
+                            <ul>
+                                <li ><i class="fa fa-music"></i> <a href="#">Home</a></li>
+                                <li><i class="fa fa-music"></i> <a href="#">Bandas</a></li>
+                                <li><i class="fa fa-music"></i> <a href="#"> Discos</a></li>
+                                <li><i class="fa fa-music"></i> <a href="#">Estilos Musicais</a></li>
+                            </ul>
+                        </div>
+                        <div class="redes-sociais">
+                            <h1>Redes Sociais</h1>
+                            <img src="img/redes-sociais.png">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Carrossel
+                const carouselUl = document.querySelector('#carousel ul');
+                const slides = Array.from(carouselUl.children);
+                const indicators = document.querySelectorAll('.indicator');
+                const prevButton = document.getElementById('prev');
+                const nextButton = document.getElementById('next');
+                const slideCount = slides.length;
+        
+                let currentIndex = 0;
+                let isTransitioning = false;
+                let interval;
+
+                const menuToggle = document.getElementById('menu_toggle');  // O checkbox que controla o menu
+                const menuBox = document.querySelector('.menu_box');        // O menu
+                const hamburgerMenu = document.querySelector('.hamburger-menu');  // O contêiner do menu (hambúrguer)
+
+                // Função para fechar o menu quando clicado fora
+                document.addEventListener('click', function(event) {
+                    // Verifica se o clique foi fora do menu hambúrguer
+                    if (!hamburgerMenu.contains(event.target)) {
+                        // Fecha o menu (desmarca o checkbox)
+                        menuToggle.checked = false;
+                    }
+                });
+        
+                // Duplica os slides para criar continuidade
+                const firstSlide = slides[0].cloneNode(true);
+                const lastSlide = slides[slides.length - 1].cloneNode(true);
+        
+                carouselUl.insertBefore(lastSlide, slides[0]);
+                carouselUl.appendChild(firstSlide);
+        
+                const updatedSlides = Array.from(carouselUl.children); // Atualiza a lista de slides
+                const totalSlides = updatedSlides.length;
+        
+                // Ajusta a largura do carrossel e dos slides
+                carouselUl.style.width = `${100 * totalSlides}%`;
+                updatedSlides.forEach(slide => {
+                    slide.style.width = `${100 / totalSlides}%`;
+                });
+        
+                // Posiciona o carrossel no slide inicial real
+                carouselUl.style.marginLeft = `-${100}%`;
+        
+                function updateCarousel(index) {
+                    // Previne múltiplas transições ao mesmo tempo
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+        
+                    currentIndex = index;
+                    carouselUl.style.transition = 'margin-left 0.5s';
+                    carouselUl.style.marginLeft = `-${(currentIndex + 1) * 100}%`;
+        
+                    // Ajusta os indicadores
+                    indicators.forEach((indicator, i) => {
+                        indicator.classList.toggle('active', i === currentIndex);
+                    });
+        
+                    // Restaura a posição ao final da transição, se necessário
+                    carouselUl.addEventListener(
+                        'transitionend',
+                        () => {
+                            isTransitioning = false;
+                            if (currentIndex === -1) {
+                                carouselUl.style.transition = 'none';
+                                currentIndex = slideCount - 1;
+                                carouselUl.style.marginLeft = `-${(currentIndex + 1) * 100}%`;
+                            } else if (currentIndex === slideCount) {
+                                carouselUl.style.transition = 'none';
+                                currentIndex = 0;
+                                carouselUl.style.marginLeft = `-${(currentIndex + 1) * 100}%`;
+                            }
+                        },
+                        { once: true }
+                    );
+                }
+        
+                function nextSlide() {
+                    updateCarousel(currentIndex + 1);
+                }
+        
+                function prevSlide() {
+                    updateCarousel(currentIndex - 1);
+                }
+        
+                // Autoplay
+                function startAutoPlay() {
+                    interval = setInterval(nextSlide, 4000);
+                }
+        
+                function stopAutoPlay() {
+                    clearInterval(interval);
+                }
+        
+                // Configura os indicadores
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        updateCarousel(index);
+                    });
+                });
+        
+                // Configura os botões de navegação
+                prevButton.addEventListener('click', prevSlide);
+                nextButton.addEventListener('click', nextSlide);
+        
+                // Pausa o autoplay ao interagir com o carrossel
+                carouselUl.addEventListener('mouseenter', stopAutoPlay);
+                carouselUl.addEventListener('mouseleave', startAutoPlay);
+        
+                // Inicializa
+                startAutoPlay();
+
+            });
+        </script>
+    </body>
+</html>

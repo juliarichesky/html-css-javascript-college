@@ -1,0 +1,169 @@
+VITE reconhece rotas.
+
+=> remover todo o conteudo de public
+=> remover arquivos css (app.css e index.css)
+=> remover no main: import './index.css'
+
+=> O arquivo App.tsx é o arquivo principal, áreas onde serão exibidas em todas as outras páginas. é uma repetição, header e footer. o restante do site não.
+
+=> Para linkar css, imagens, arquivos estaticos (arquivos que nao vou modificar), precisa pegar os arquivos, copiar para a pasta public e colar. crtl c + crtl v.
+
+=> para importar os arquivos para App.tsx :
+
+import '/css/font.css'
+
+=> copiar o html
+
+=> criar uma pasta chamada components dentro de src 
+=> criar uma pasta chamada com o nome do component (ex: header)
+=> criar o documento Header.tsx
+=> dentro do documento, cria o componente:
+
+const Header = () =>{
+    return(
+        <>
+        </>
+    )
+}
+
+no meu exemplo ficou assim;
+
+const Header = () =>{
+    return(
+        <>
+        <header>
+                <div className="content">
+                    <div className="header header_esq">
+                        <div className="logo"><a href="index.html"><span className="titulo">FRONT</span><span>Musics</span></a></div>
+                    </div>
+                    <div className="header header_dir">
+                        <span>Bem Vindo, ( <a href="perfil.html">Login</a> )</span>
+                    </div>
+                    <nav className="hamburger-menu">
+                        <input type="checkbox" id="menu_toggle">
+                        <label className="menu_btn" for="menu_toggle"><span></span></label>
+                        <ul className="menu_box">
+                            <li><a className="menu_item" href="perfil.html">Perfil</a></li>
+                            <li><a className="menu_item" href="#">classNameic Rock</a></li>
+                            <li><a className="menu_item" href="#">Grunge</a></li>
+                            <li><a className="menu_item" href="#">Hard Rock</a></li>
+                            <li><a className="menu_item" href="#">Pós-Punk</a></li>
+                            <li><a className="menu_item" href="#">Punk Rock</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav id="menuPrincipal">
+
+                    <div className="content">
+                        <ul id="menuPrincipalItens">
+                            <li><a href="#">classNameic Rock</a></li>
+                            <li><a href="#">Grunge</a></li>
+                            <li><a href="#">Hard Rock</a></li>
+                            <li><a href="#">Pós-Punk</a></li>
+                            <li><a href="#" className="last">Punk Rock</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        </>
+    )
+}
+
+porem vai dar erro, pq precisamos OBRIGATORIAMENTE fechar as tags E nesse caso substituir o atributo "for" para htmlFor. e precisa colocar o export default Header.
+
+const Header = () => {
+    return(
+        <>
+            <header>
+                <div className="content">
+                    <div className="header header_esq">
+                        <div className="logo"><a href="index.html"><span className="titulo">FRONT</span><span>Musics</span></a></div>
+                    </div>
+                    <div className="header header_dir">
+                        <span>Bem Vindo, ( <a href="perfil.html">Login</a> )</span>
+                    </div>
+                    <nav className="hamburger-menu">
+                        <input type="checkbox" id="menu_toggle" />
+                        <label className="menu_btn" htmlFor="menu_toggle"><span></span></label>
+                        <ul className="menu_box">
+                            <li><a className="menu_item" href="perfil.html">Perfil</a></li>
+                            <li><a className="menu_item" href="#">Classic Rock</a></li>
+                            <li><a className="menu_item" href="#">Grunge</a></li>
+                            <li><a className="menu_item" href="#">Hard Rock</a></li>
+                            <li><a className="menu_item" href="#">Pós-Punk</a></li>
+                            <li><a className="menu_item" href="#">Punk Rock</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav id="menuPrincipal">
+
+                    <div className="content">
+                        <ul id="menuPrincipalItens">
+                            <li><a href="#">Classic Rock</a></li>
+                            <li><a href="#">Grunge</a></li>
+                            <li><a href="#">Hard Rock</a></li>
+                            <li><a href="#">Pós-Punk</a></li>
+                            <li><a href="#" className="last">Punk Rock</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        </>
+    )
+}
+export default Header;
+
+agora vamos ao App.tsx e colocar o nosso wrapper e importar o Header. ele faz automaticamente, nao precisa colocar o import:
+
+import Header from './components/Header/Header';
+import '/css/fonts.css';
+import '/css/stylesGENERAL.css';
+import '/css/stylesLG.css';
+import '/css/stylesMD.css';
+import '/css/stylesSM.css';
+import '/css/stylesXL.css';
+import '/css/stylesXS.css';
+
+const App = () => {
+  return (
+    <>
+      <div id="wrapper">
+        <Header />
+      </div>
+    </>
+  )
+}
+export default App;
+
+e para exportar o footer é a mesma coisa, tudo dentro do wrapper.
+e para expotar o homem tambem, modificar as tags, fechar, incluir divs, etc...
+
+
+no final, ficou assim:
+
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import '../public/css/fonts.css';
+import '../public/css/stylesGENERAL.css';
+import '../public/css/stylesLG.css';
+import '../public/css/stylesMD.css';
+import '../public/css/stylesSM.css';
+import '../public/css/stylesXL.css';
+import '../public/css/stylesXS.css';
+import Home from './pages/Home/Home';
+
+const App = () => {
+  return (
+    <>
+    <div id="wrapper">
+      <Header />
+      <Home />
+      <Footer />
+    </div>
+    </>
+  )
+}
+export default App;
+
+PS: PASTA NODE_MODULES APAGADA! PARA ABRIR ELA É NECESSARIO RODAR O COMANDO npm install
+

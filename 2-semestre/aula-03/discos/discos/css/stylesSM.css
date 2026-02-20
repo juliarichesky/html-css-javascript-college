@@ -1,0 +1,214 @@
+/* SMall devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width:479.99px) and (max-width: 599.98px) {
+
+    header{
+        height: 60px;
+    }
+    .header_esq{
+        width: 52% !important;
+    } 
+    .header_dir{
+        display: none;
+    } 
+    #menuPrincipal{
+        display: none;
+    }
+    .hamburger-menu{
+		float:right;
+        display: block;
+	}
+	.login a{
+		float:right;
+		line-height: 32px;
+		padding-right: 10px;
+		font-size: 12px;
+		text-decoration:none;
+		font-family:sans-serif;
+	}
+	#menu_toggle{
+		opacity: 0;
+        width: 26px;
+        height: 26px;
+	}
+	#menu_toggle:checked + .menu_btn > span{
+		transform:rotate(45deg);
+	}
+	#menu_toggle:checked + .menu_btn > span::before{
+		top:0;
+		transform:rotate(0);
+	}
+	#menu_toggle:checked + .menu_btn > span::after{
+		top:0;
+		transform:rotate(90deg);
+	}
+	#menu_toggle:checked ~ .menu_box {
+        right: 0 !important;
+    }
+    
+    .menu_btn {
+        top: 30px;
+        right: 16px;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        z-index: 1;
+    }
+    
+    .menu_btn > span, .menu_btn > span::before, .menu_btn > span::after {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 1px;
+        background-color: #fff;
+        transition-duration: .25s;
+    }
+    
+    .menu_btn > span::before {
+        content: '';
+        top: -8px;
+        background-color: #fff;
+    }
+    
+    .menu_btn > span::after {
+        content: '';
+        top: 8px;
+        background-color: #fff;
+    }
+    
+    /* Altera a cor para cinza quando o menu está aberto */
+    #menu_toggle:checked + .menu_btn > span, 
+    #menu_toggle:checked + .menu_btn > span::before, 
+    #menu_toggle:checked + .menu_btn > span::after {
+        background-color: #414141;
+    }
+    
+    /* Rotaciona os spans para formar um "X" quando o menu está aberto */
+    #menu_toggle:checked + .menu_btn > span {
+        transform: rotate(45deg);
+        z-index: 11;
+    }
+    
+    #menu_toggle:checked + .menu_btn > span::before {
+        transform: rotate(90deg);
+        top: 0;
+    }
+    
+    #menu_toggle:checked + .menu_btn > span::after {
+        transform: rotate(90deg);
+        bottom: 0;
+    }
+	.menu_box{
+		display: block;
+		position: fixed;
+		top:0;
+		right: -100%;
+		height: 100vh;
+		width: 150px;
+		margin: 0;
+		padding: 42px 0 0 0;
+		list-style: none;
+		background-color: #eee;
+		box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+		transition-duration: .25s;
+        border-left: 1px solid #414141;
+        z-index: 10;
+	}
+	.menu_box li{
+		border-bottom: 1px ridge #ddd;
+	}
+	.menu_box li:first-child{
+		border-top: 1px ridge #ddd;
+        margin-top: 17px;
+	}
+	.menu_item{
+		display: block;
+		padding: 12px 24px;
+		color:#333;
+		font-family: 'Roboto', sans-serif;
+		font-size: 13px;
+		font-weight: 00;
+		text-decoration: none;
+		transition-duration: .25s;
+	}
+	.menu_item:hover{
+		background-color: #ccc;
+	}
+	
+	#menu{
+		display: none;
+	}
+
+    /* CARROSSEL INÍCIO */
+    #imageContainer {
+        height: 200px;
+    }
+
+    #carousel {
+        height:100%;
+    }
+
+    #carousel ul {
+        height: 200px;
+    }
+    #carousel ul li {
+        height: 200px;
+    }
+    #carousel ul li img{
+        width: 100%;
+        height:100%;
+    }
+    /* CARROSSEL FIM */
+
+    /* CDs INÍCIO */
+    #cds {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    article h2 {
+        font-size: 1.2rem;
+    }
+    
+    article h3 {
+        font-size: 0.8rem;
+    }
+    
+    article p {
+        font-size: 0.78rem;
+        line-height: 25px;
+    }
+    /* CDs FIM */
+
+    /* CONTEÚDO DA PÁGINA DOS CDs INÍCIO */
+
+    .imgCD{
+        clear: left;
+        margin-bottom: 20px;
+    }
+    .imgCD img{
+        width: 90%;
+    }
+
+/* CONTEÚDO DA PÁGINA DOS CDs FIM*/
+
+    /* FOOTER INÍCIO */
+    .content-footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .address, .redes-sociais {
+        margin-top: 30px;
+    }
+
+
+    footer p, footer ul{
+        font-size: 0.7rem;
+        line-height: 30px;
+    }
+
+    footer a{
+        font-size: 0.7rem;
+    }
+    /* FOOTER FIM */
+
+}

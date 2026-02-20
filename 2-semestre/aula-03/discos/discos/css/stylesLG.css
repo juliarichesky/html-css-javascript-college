@@ -1,0 +1,55 @@
+/* LarGe devices (laptops/desktops, 992px and up) */
+
+@media (min-width:991.99px) and (max-width: 1199.98px) {
+
+    /* CARROSSEL INÍCIO */
+    #imageContainer {
+        height: 378px;
+    }
+
+    #carousel {
+        height: 378px;
+    }
+
+    #carousel ul {
+        height: 378px;
+    }
+    #carousel ul li {
+        height: 378px;
+    }
+    #carousel ul li img{
+        width: 100%;
+        height:100%;
+    }
+    /* CARROSSEL FIM */
+
+    /* CDs INÍCIO */
+	#cds {
+        grid-template-columns: repeat(4, 1fr);        
+    }
+    
+    article h2 {
+        font-size: 1.2rem;
+    }
+    
+    article h3 {
+        font-size: 0.8rem;
+    }
+    
+    article p {
+        font-size: 0.8rem;
+        line-height: 20px;
+    }
+    /* CDs FIM */
+
+    /* CONTEÚDO DA PÁGINA DOS CDs INÍCIO */
+
+    .imgCD{
+        margin-bottom: 20px;
+    }
+    .imgCD img{
+        width: 90%;
+    }
+
+    /* CONTEÚDO DA PÁGINA DOS CDs FIM*/
+}
