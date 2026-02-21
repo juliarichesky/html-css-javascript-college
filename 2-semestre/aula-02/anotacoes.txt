@@ -1,0 +1,153 @@
+Variável
+-------------
+Formato: camelCase
+Exemplo: userName, isLoggedIn, totalPrice
+
+Regras:
+1. Use nomes descritivos (evite x, data, temp, nomes sem contexto).
+2. Prefira nomes curtos, mas claros.
+3. Use prefixos como is, has, can para variáveis booleanas: isActive, hasError.
+........................................................................
+
+
+Funções
+-----------------
+Formato: camelCase
+Exemplo: handleClick, fetchUserData, calculateTotal
+
+Regras:
+1. Comece com um verbo que indique ação (get, fetch, handle, submit, update, etc).
+2. Seja específico: handleLogin, não apenas handle.
+........................................................................
+
+
+Componenentes React
+----------------------
+Formato: PascalCase
+Exemplo: Header, UserProfile, RecipeCard
+
+Regras:
+1. Cada componente deve estar em seu próprio arquivo com o mesmo nome: RecipeCard.tsx → function 
+RecipeCard() { ... }
+2. Evite abreviações sem contexto (ex: UsrPrf).
+3. Componentes com múltiplas palavras devem manter a clareza: ProductListItem, UserSettingsForm.
+........................................................................
+
+
+Pastas
+-------------------
+Formato: kebab-case ou camelCase (depende da equipe/projeto, mas seja consistente).
+Exemplo: components/, user-profile/, recipePage/
+........................................................................
+
+
+Arquivos
+--------------------
+Componentes React: PascalCase.tsx (como LoginForm.tsx)
+Hooks: useCamelCase.ts (como useAuth.ts)
+Utilitários: camelCase.ts (como formatDate.ts)
+Páginas (em /pages): o nome do arquivo define a rota (ex: about.tsx → /about)
+........................................................................
+
+
+Hooks Personalizados
+----------------------
+Formato: useCamelCase
+Exemplo: useAuth, useFetch, useToggle
+
+Regras:
+1. Sempre comece com use.
+2. Mantenha o nome descritivo do propósito do hook.
+........................................................................
+
+
+Constantes
+-----------------------
+Formato: UPPER_SNAKE_CASE (para valores fixos ou de configuração)
+Exemplo: API_BASE_URL, MAX_RETRIES, DEFAULT_LANGUAGECRIANDO FUNÇÕES
+
+
+-----------------------------x------------------------
+
+FUNÇÕES:
+=> toda função tem retorno: return ().
+=> pode ter mais de uma função
+=> a função principal vai ser a default (normalmente)
+=> <></> vai ser tipo uma <div></div> - professor sugeriu para deixar a tag em branco.
+
+........................
+
+Exportação direta: cria  a função e exporta ela em uma linha.
+
+export default function NomeFuncao() {
+    return (
+        <>
+            <div>Olá, mundo!</div>;
+        </>
+    )
+}
+
+Vantagens: código limpo / Desvantagens: um export default por arquivo, o nome da função pode ser alterado.
+
+...........................
+
+Exportação não direta: cria a função inteira e no final exporta.
+
+function NomeFuncao() {
+    return (
+        <>
+            <div>Olá, mundo!</div>;
+        </>
+    )
+export default function NomeFuncao;
+}
+
+Vantanges:
+
+..............................
+
+Função Arrow Function: é uma expressão de função introduzida no ES6 que utiliza a sintaxe => para definir funcões de forma mais concisa.
+
+const NomeFuncao= () => {
+    return (
+        <>
+            <div>Olá, mundo!</div>;
+        </>
+    )
+}
+export default NomeFuncao;
+
+Características:
+Vantagem: mais rápida.
+
+a pasta src é a mais importante do projeto, onde vai ter tudo do seu projeto.
+a pasta public fica imagens e css.
+a pasta node_modules ficam as bibliotecas e arquivos.
+a parta .gitignore ignora coisas quando for enviar pro git.
+a pasta eslint é as configuraçoes padoes do code do ts ou tsx.
+só poder ter UM UNICO arquivo html.
+a pasta package.json é importante pois mostra o pacote usado, o nome do projeto, versão, se tem editores de desenvolvimento, onde está trabalhando com preview, dependencias, e outras.
+a pasta packega-lock.json vai pegar as infos do package.json para baixar as versões para serem iguais.
+
+...............................
+
+para instalar o node_modules precisa executar no terminal:
+npm install
+
+e ai sim vai criar a  pasta node_modules e ser executado.
+
+--------------x-----------------
+
+Componenentização
+É a prática de dividir uma interface em partes. Cada componente é uma peça de interface, como um botão, cabeçalho, footer, card de produto, tudo. É vantajoso pois reutiliza o código, fica mais organizado, claro e mais fácil de manter e modificar.
+
+Para importar uma função padrão, usa-se ''
+Para importar uma função não padrão, usa-se {}
+
+Para importar imagens, precisa importar:
+
+import reactLogo from './assets/react.svg'
+[...]
+<img src={reactLogo}........
+
+Toda classe de CSS agora vai ser className.
