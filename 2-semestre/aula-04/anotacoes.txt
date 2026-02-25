@@ -1,0 +1,72 @@
+até agora, fomos ate npx create-vite@latest. agora vamos colocar o nome do projeto e colocar se vamos usar framework e a linguagem:
+
+npx create-vite@latest exemplo01 --template react-ts
+
+estilização em react: css global, css modules e tailwind css.
+
+css global:
+=> aquele que temos trabalhado desde o primeiro semestre.
+=> será importado no main.tsx ou App.tsx
+=> nomes de classes iguais sobrescrevem a outra
+=> para importar, precisa colocar import "./nome";
+
+css module:
+=> criar arquivo com .module.css. exemplo: Mensagem.module.css
+=> classes iguais em arquivos diferentes, nao sobrepoem a outra.
+=> para importar, precisa colocar:
+
+import estilos from "./nome";
+
+=> voce da um apelido, que no caso é "estilos".
+=> no App.tsx, precisa importar o componente.
+=> em className, precisa colocar {} com o nome da variavel, que no caso é "estilos" + . + o nome da classe. vai ficar assim:
+
+<p className={estilos.paragrafo}>Isso é um componente utilizando CSS Modules.</p>
+
+....................................
+
+nesse momento, o professor criou um outro documento chamado "teste.css" e criou uma classe chamada paragrafo. porém essa classe tem uma formatação diferente da outra, com cor verde, com o mesmo nome, mas mesmo assim deu certo. uma não sobrepoe a outra.
+
+const Mensagem = () => {
+    return(
+        <>
+            <p className={estilos.paragrafo}>Isso é um componente utilizando CSS Modules.</p>
+            <h1 className={estilos.paragrafo2}>Hello World!</h1>
+            <h2 className="paragrafo">Hello World 2</h2>
+        </>
+    )
+}
+export default Mensagem;
+
+....................................
+
+tailwind css:
+=> BAIXAR A EXTENSAO "Tailwind CSS IntelliSense"
+=> é um framwrok para estilização.
+=> em vez de escrever classes no css, usa classes prontas direto no html/jsx.
+=> é necessario instalar.
+=> para rodar, precisa ACESSAR A SUA PASTA atraves de cd nomedapasta
+=> depois, rodar esse comando:
+
+npm install tailwindcss @tailwindcss/vite
+
+=> no exemplo ficou assim:
+
+PS C:\Users\muarr\OneDrive\Área de Trabalho\juju\html-css-javascript-college\2-semestre\aula-04\exemplo03> npm install tailwindcss @tailwindcss/vite
+
+=> importar no projeto, precisa entrar na pagina "vite.config.ts" e importar o tailwind, depois adiciona nos plugins. assim:
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(),
+    tailwindcss()
+  ],
+})
+
+em App.css, apaga tudo e coloca:
+
+@import "tailwindcss";
