@@ -1,0 +1,310 @@
+O VITE não reconhece rotas. ou seja, para transitar entre uma página e outra, precisa ensinar pra ele. precisa instalar o pacote.
+
+TIPOS DE ROTAS 
+
+- Estáticas
+um endereço fixo, previsível. acessar diretamente no código. são caminhos pre-definidos. ex: home, contato, sobre...
+essa rota não muda com parametro. o caminho é sempre o mesmo /sobre, /contato, /faq.
+precisa criar roteamento.
+
+=> é necessário instalar o REACT-ROUTER-DOM
+ele é uma biblioteca para gerenciar a navegação em react.
+
+vamos trabalhar com: 
+
+- BrowserRouter
+- Routes
+- Route
+- Link (links agora externos usa-se a tag <a></a>, mas para links internos não)
+
+para usar o pacotes, precisa colocar o comando: npm install react-router-dom
+
+vá em App.tsx e dentro de <></> colocar o BrowserRouter.
+depois, precisa mostrar o conjunto de rotas.
+precisa importar com <Routes></Routes>.
+depois, precisa especificar tudo: caminho e elemento.
+
+      <Routes>
+        <Route path="/" element={Home}></Route>
+      </Routes>
+
+      OBS: A / significa que vai entrar no home direto.
+
+é necessário importar tambem o Route. o código vai ficar assim:
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Home from './pages/Home/Home';
+import Sobre from './pages/Sobre/Sobre';
+import Contato from './pages/Contato/Contato';
+
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contato" element={<Contato />} />
+          </Routes>
+
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default App;
+
+para criar links do cabeçalho, em vez de <a></a> vamos usar <Link></Link>:
+- é necessário importar links também. exemplo do header com o menu de navegação:
+
+import { Link } from "react-router-dom";
+
+const Header = () => {
+    return(
+        <>
+        <header className='bg-pink-300 text-white p-6 text-center'>
+        <h1 className='text-6xl font-bold mb-2'>Bem vindo!</h1>
+        <p className='text-lg'>Trabalhando com TailwindCSS.</p>
+
+            <nav className='mt-4 float-end'>
+          <Link to= "/" className='text-white hover:text-pink-800 mx-2 bg-[#bd6c87] p-2 rounded'>Home</Link>
+          <Link to="/sobre" className='text-white hover:text-pink-800 mx-2 bg-[#bd6c87] p-2 rounded'>Sobre</Link>
+          <Link to="/contato" className='text-white hover:text-pink-800 mx-2 bg-[#bd6c87] p-2 rounded'>Contato</Link>
+            </nav>
+
+      </header>
+        </>
+    )
+}
+export default Header;
+
+precisamos criar a página de erro 404 - página não encontrada.
+para criar é fácil, cria uma pasta dentro de "pages" chamanda NotFound, e um documento tsx tambem. é o mesmo raciocinio dos outros componentes.
+para implementar, em Routes, colocar ela com /*.
+
+vai ficar assim:
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+
+para adicionar imagens existem dois tipos: armazenadas na pasta public e armazenadas em assets.
+
+=> na pasta public:
+todo mundo acessa. não precisa importar.
+<img src="/heart.png" />
+
+
+=> na pasta assets: 
+somente o server, o node tem acesso. precisa importar.
+import icon404 from '../../assets/img/404.png'
+
+exemplo:
+
+import icon404 from '../../assets/img/404.png'
+
+const NotFound = () => {
+    return(
+        <>
+        <main className="flex-1 container mx-auto p-6 flex flex-col items-center justify-center">
+            <div className="grid grid-cols-1 gap-6">
+                <h1 className="text-6xl font-semibold mb-2 text-center">Página não encontrada!</h1>
+                <img src={icon404} />
+            </div>
+        </main>
+        </>
+    )
+}
+export default NotFound;
+
+................................................................
+
+- Dinâmicas
+na url, normalmente temos muitas coisas escritas e com &, que é uma concatenação. mas, se tiver "?", voce envia parametros.
+exemplo: ?id=03903&0403
+ou seja, sao caminhos que mudam com valores passados na URL. esses valores sao parametros, e permitem renderizar o mesmo componente com dados diferentes.
+
+=> cuidado com o tipo de informação que voce envia pela url.
+=> nao enviar login e senha pela url (informaçoes sensiveis).
+=> ideal para paginas de produtos, usuarios, postagens, etc.
+
+é necessário criar uma pasta e um arquivo, e criar a função. porém, adicionar uma outra const dentro, assim:
+
+import { useParams } from "react-router-dom";
+
+const ProdutoDetalhe = () => {
+    const {id} = useParams();
+  return (
+    <>
+      <main className="flex-1 container mx-auto p-6">
+        <div className="grid grid-cols-1 gap-6">
+          <h2 className="text-2xl font-semibold mb-2">Produto {id}</h2>
+        </div>
+      </main>
+    </>
+  );
+};
+export default ProdutoDetalhe;
+
+O que é o useParams?
+Imagine que você tem um site de e-commerce e as URLs dos produtos são:
+
+meusite.com/produto/1
+meusite.com/produto/2
+meusite.com/produto/bola-de-futebol
+
+O número 1, 2 ou o texto bola-de-futebol são parâmetros variáveis. O useParams serve justamente para o seu código React conseguir pegar esse valor da barra de endereço e usar dentro do componente.
+
+const {id} = useParams();
+useParams(): Essa função vai até a URL e puxa todos os parâmetros que foram definidos na sua rota.
+{ id }: Isso é a desestruturação. O useParams devolve um objeto. Se na sua rota você definiu o nome como :id, você usa { id } para extrair esse valor direto para uma variável.
+Resultado: A variável id agora guarda o valor que aparece lá na URL.
+
+e para aparecer nas rotas, colocar:
+
+<Route path="/produto/:id" element={<ProdutoDetalhe />} />
+=> precisa colocar o :id porque foi o que declaramos.
+
+- Na prática (O que o usuário vê)
+Se o usuário acessar localhost:3000/produto/42:
+
+O useParams() vai ler a URL.
+Ele vai encontrar o valor 42.
+A sua variável id passará a valer 42.
+Na tela, o seu <h2> vai renderizar: Produto 42.
+
+................................................................
+
+- Públicas
+- Privadas
+- Aninhadas
+
+--------------------------------------------
+
+- Componente <Outlet/>
+renderiza a rota  filha dentro de uma rota pai com layout.
+trabalha com componentes em comum e vai aparecer em todas as paginas.
+conseguimos separar conteudo, nao fica tudo junto.
+conseguimos reutilizar layouts.
+
+- criar a pasta Layout e o arquivo, dentro de componentes.
+
+- index: rota padrão: fica assim
+
+            <Route index element={<Home />} />
+
+- tudo que se repete n vezes na tela, sao componentes funcionais.
+
+para criar os componentes dos cards, é necessario criar a pasta e o arquivo tsx chamado Card, mas nao adianta só colocar o <Card></Card>, precisa fazer dessa forma:
+
+import type { ReactNode } from "react";
+
+type CardProps = {
+    children: ReactNode;
+}
+const Card = ({ children } : CardProps) => {
+    return(
+        <>
+        <div className="bg-pink-100 p-4 rounded">
+            {children}
+        </div>
+        </>
+    )
+}
+export default Card;
+
+................................
+
+o que siginifica:
+( {children} )
+- É aqui que a mágica acontece dentro do HTML (JSX).
+- O {children} entre chaves diz ao React: "O que quer que o usuário coloque dentro da tag <Card>, renderize aqui dentro desta div".
+
+---------------------------------------
+
+type CardProps = {
+    children: ReactNode;
+}
+- type CardProps: Você está criando um "contrato" chamado CardProps.
+- children: ReactNode: Você está dizendo: "Olha, esse componente vai receber algo chamado children, e o tipo dele é ReactNode".
+- ReactNode: É um tipo bem genérico que aceita quase tudo: um texto, um botão, outro componente ou até uma lista de elementos.
+
+-----------------------------------------
+
+const Card = ({ children } : CardProps) => {
+    return(
+        <>
+        <div className="bg-pink-100 p-4 rounded">
+            {children}
+        </div>
+        </>
+    )
+}
+export default Card;
+- Aqui é a criação do componente propriamente dita.
+- ({ children }): Isso se chama desestruturação. Em vez de escrever (props) e depois usar props.children, você já "pega" o children direto de dentro das propriedades que o componente recebe.
+- : CardProps: Você está avisando ao React: "Este componente deve seguir as regras que eu criei ali em cima no type CardProps".
+
+-----------------------------------------------
+
+ARRAY
+- criaremos uma matriz, para exibir as informaçoes n vezes.
+- fica dentro da função principal (Home.tsx nesse exemplo)
+
+const produtos = [
+    {
+      id: 1,
+      nome: "Produto 1",
+      descricao:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quidem deserunt, quo soluta animi nobis ducimus possimus? Qui temporibus consequuntur, obcaecati maxime recusandae enim sequi nulla a, fuga, totam tempora.",
+    },
+]
+
+vamos usar a estrutura .map() para mapear e executar. além disso, utilizar
+
+          {produtos.map((produto) => (
+            <Card key={produto.id}>
+              <h2 className="text-2xl font-semibold mb-2">Produto {produto.id}</h2>
+              <p>{produto.descricao}</p>
+              <Link
+                to={`/produto/${produto.id}`}
+                className="bg-green-500 text-white text-center px-4 py-2 rounded mt-6 inline-block"
+              >
+                Clique aqui!
+              </Link>
+            </Card>
+          ))}
+
+Basicamente, você está dizendo para o React: "Para cada item que existir na minha lista de produtos, crie um Card na tela."
+
+Aqui está o "quem é quem" nesse código:
+
+1. produtos.map((produto) => ( ... ))
+O .map() é como um carimbo. Ele percorre o seu array de produtos.
+Para cada item lá dentro, ele executa o que está entre os parênteses ( ).
+A variável produto (no singular) representa o item atual que o carimbo está processando naquele momento.
+
+2. <Card key={produto.id}>
+O Componente: Você está usando aquele componente Card que criou antes.
+O "Children": Tudo o que está dentro do <Card> e </Card> (o h2, o p e o Link) entra naquelas chaves {children}.
+A key: É o RG do item. O React precisa disso para não se perder se você deletar ou mover um produto da lista.
+
+3. As Chaves { } e Template Strings ` `
+No React, sempre que você quer colocar código JavaScript (como variáveis) dentro do HTML, você usa chaves.
+
+Produto {produto.id}: Se o ID for 10, na tela vai aparecer "Produto 10".
+to={/produto/${produto.id}} : Isso cria o link dinâmico.
+
+Se for o produto 1, o link vira /produto/1.
+Se for o produto 5, vira /produto/5.
