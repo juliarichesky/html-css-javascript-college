@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nome": "Garrafa Térmica",
+    "descricao": "Construída em aço inoxidável de parede dupla com isolamento a vácuo, mantém bebidas quentes por 12h ou geladas por 24h. Possui bocal anti-respingo e acabamento resistente a riscos."
+  },
+  {
+    "id": 2,
+    "nome": "Fone Bluetooth",
+    "descricao": "Equipado com drivers de 40mm para graves profundos e tecnologia Active Noise Cancelling (ANC). A bateria oferece 40 horas de autonomia com carregamento ultra-rápido via USB-C."
+  },
+  {
+    "id": 3,
+    "nome": "Teclado Mecânico",
+    "descricao": "Layout ABNT2 com switches de alta precisão (vida útil de 50 milhões de cliques) e retroiluminação RGB individual por tecla, ideal para setups de alta performance e produtividade."
+  },
+  {
+    "id": 4,
+    "nome": "Smartwatch Sport",
+    "descricao": "Tela AMOLED de alta resolução com monitoramento de oxigênio no sangue (SpO2), frequência cardíaca contínua e mais de 90 modos esportivos com resistência à água de até 5 ATM."
+  },
+  {
+    "id": 5,
+    "nome": "Mochila Impermeável",
+    "descricao": "Confeccionada em tecido Oxford de alta densidade com porta USB externa para carregamento. Possui compartimento oculto antifurto e espaço acolchoado para laptops de até 15.6 polegadas."
+  },
+  {
+    "id": 6,
+    "nome": "Panela de Pressão",
+    "descricao": "Fabricada em alumínio de espessura extra com 5 camadas de revestimento antiaderente cerâmico. Conta com válvula de segurança tripla e alças ergonômicas que não dissipam calor."
+  }
+]

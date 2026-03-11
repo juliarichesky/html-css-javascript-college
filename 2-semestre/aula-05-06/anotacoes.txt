@@ -308,3 +308,57 @@ to={/produto/${produto.id}} : Isso cria o link dinâmico.
 
 Se for o produto 1, o link vira /produto/1.
 Se for o produto 5, vira /produto/5.
+
+...................................
+
+na aula 7 mudamos as informações de home. agora, vamos permitir que somente 100 caracteres fiquem aparecendo nos cards. em Home.tsx, adicionar:
+
+<p>{produto.descricao.substring(0,99) + "..."}</p>
+
+depois, adicionar um saiba mais:
+
+<p>
+  {produto.descricao.substring(0, 99) + "..."}
+    <Link to={`/produto/${produto.id}`} className="text-blue-500">
+        Saiba mais
+    </Link>
+</p>
+
+................................
+
+agora vamos fazer uma busca no site.
+copiar o .json do home e colocar em ProdutoDetalhe, dentro da função, antes de return.
+
+=> ele busca no maximo 1 e no minimo 0
+
+  const produto = produtos.find((p) => p.id === Number(id)); //Aqui buscamos o produto com o id correspondente
+
+  .......................
+
+<h2 className="text-2xl font-semibold mb-2">Produto: {produto?.nome}</h2>
+
+=> quando tem ? no meio, diz que nao é obrigatorio.
+=> vamos fazer um if para: se nao achar o produto, ja que nao vamos usar "?" ele mostra mensagem de erro.
+
+if (!produto) {
+      return (
+    <>
+      <main className="flex-1 container mx-auto p-6">
+        <div className="grid grid-cols-1 gap-6">
+          <h2 className="text-2xl font-semibold mb-2">Produto não encontrado.</h2>
+        </div>
+      </main>
+    </>
+  );
+  }
+
+=> colocar o else nao é obrigatorio.
+
+...........................
+
+agora, vamos criar uma pasta dentro de src chamanda data, e um documento chamado "produtos.json" e colocar todos aqueles dados.
+para importar os dados para home, colocar: 
+import produtos from "../../data/produtos.json";
+
+e no ProdutoDetalhe:
+import produtos from "../../data/produtos.json";
