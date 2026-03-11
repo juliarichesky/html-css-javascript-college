@@ -1,0 +1,46 @@
+HOOKS
+=> funções no react que permitem adicionar funcionalidades a componentes funcionais.
+=> typescript oferece tipagem segura, vamos colocar tipo nos valores que trabalhamos: inteiro, real, booleano, string...
+
+=> vamos usar bastante:
+
+useState - gerencia o estado local, variável.
+=> retorna dois valores: estado atual e uma função para atualizar esse estado.
+
+sintaxe:
+
+const [estado, setEstado] = useState (valorInicial);
+
+- estado: variável que armazena o valor atual.
+- setEstado: fuunção usada para atualizar o valor.
+- valorInicial: o valor inicial do estado.
+
+const App = () => {
+  const [valor, setValor] = useState(0);
+  return (
+    <>
+    <h1>UseState</h1>
+    <h2>Conteúdo do state: {valor}</h2>
+    <button type="button" onClick={() => setValor(valor + 1)} >+1</button>
+    </>
+  )
+}
+
+1. criamos a const [valor, setValor] = useState(0);
+2. o conteudo do state é o {valor} e precisa ser entre conchetes.
+3. precisa usar o onClick para atualizar o valor.
+4. não pode colocar somente onClick={setValor}, não funciona. precisa colocar uma função anonima: () => setValor.
+5. depois disso, precisamos colocar (valor +1) porque ele sempre vai somando, a cada clique, mais um.
+
+=> pra fazer a operação contrária, só trocar o + pelo -.
+<button type="button" onClick={() => setValor(valor - 1)} >-1</button>
+
+=> para desabilitar o botão, podemos colocar o "disabled".
+<button type="button" onClick={() => setValor(valor - 1)} disabled>-1</button> não funciona. precisa ser feito dessa forma:
+disabled={valor >= 10}
+
+=> ou seja, quando chegar a 10, o botao vai desativar.
+
+..............................
+
+useEffect - executa efeitos colaterais.
