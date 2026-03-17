@@ -1,0 +1,76 @@
+HOOKS: sempre dentro da função, mas antes de return.
+
+const App = () => {
+
+    const [estado, setEstado] = useState (valorInicial);
+
+    return(
+        <>
+        </>
+    )
+}
+
+cont = state cont / MINHA VARIAVEL
+setCont = função que atualiza o state cont / ATUALIZAR A VARIAVEL
+useState = função do react, com um valor inicial.
+.....................
+
+além dos botoes de -1 e +1, e os disabled, vamos criar uma função para escrever o nome.
+
+é necessário colocar o tipo de função da função, ou seja, antes criavamos os nomes de qualquer jeito, mas agora nao, é necessário especificar para que serve.
+exemplo: handleChange => função anonima.
+
+  const [nome, setNome] = useState("");
+  const handleChange = () => {
+  }
+
+além disso, criamos o que vamos modificar:
+
+    Nome: <input type="text" />
+    Nome digitado
+
+nesse exemplo, não conseguimos modificar o que está escrito, porque é necessário colocar valores e modificar a nossa função, afinal, é ela quem vai fazer acontecer.
+
+    Nome: <input type="text" value={nome} onChange={handleChange} />
+    Nome digitado:
+
+value={nome} = o valor é nome da variavel que declaramos
+onChange={handleChange} = é o evento de mudança, e ele chama a função handleChange.
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNome(event.target.value);
+  }
+
+event: React.ChangeEvent<HTMLInputElement> => monitorando a mudança de comportante dentro do elemento input do HTML.
+setNome(event.target.value) => o evento armazanea o alvo, que é o parametro valor.
+
+................................
+
+até agora, tudo ficou assim:
+
+import { useState } from "react";
+
+const App = () => {
+  const [cont, setCont] = useState(0);
+  const [nome, setNome] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNome(event.target.value);
+  }
+  return(
+    <>
+    CONT: {cont}
+    <br />
+    <button onClick={() => {setCont(cont +1)}} disabled={cont >= 10}>+1</button>
+    <button onClick={() => {setCont(cont -1)}} disabled={cont == 0}>-1</button>
+    <br />
+    Nome: <input type="text" value={nome} onChange={handleChange} />
+    Nome digitado: {nome}
+    </>
+  )
+}
+export default App;
+
+..............................
+
+e.preventDefault() => interrompe a ação.
