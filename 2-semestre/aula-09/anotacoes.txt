@@ -1,0 +1,152 @@
+useEffect
+
+- hook que permite lidar com efeitos colateris em componentes funcionais.
+- efeitos colaterais sao opracoes que afetam algo fora do escopo de função, como modificar DOM, buscar dados de uma API, configurar um time ou adicionar event listeners.
+
+import { useEffect } from "react";
+    useEffect(() => {  
+        // Código a ser executado no efeito
+    }
+);
+
+QUANDO USAR?
+- quando precisar realizar operações assíncronas, como chamadas de API, manipulação 
+do DOM, gerenciamento de assinaturas de eventos ou qualquer operação que não seja parte do fluxo de renderização principal.
+- quando você precisa realizar efeitos colaterais, como modificar o DOM, fazer requisições  HTTP, lidar com eventos globais (resize, keydown etc.) ou interagir com APIs externas. ele roda após a renderização e pode ser controlado por dependências.
+- chamadas de API → Buscar dados e atualizar o estado
+- modificar o DOM fora do JSX → Exemplo: alterar document.title
+- event listeners globais → resize, scroll, keydown, etc.
+- timers e intervalos → setTimeout, setInterval
+- subscrições → WebSockets, Firebase, etc.
+- sincronizar estado com localStorage ou sessionStorage.
+
+
+QUANDO NÃO USAR?
+- para exibir ou atualizar o JSX com estados ou props (o React já faz isso automaticamente)
+- para calcular valores derivados do estado (use useMemo ou diretamente no JSX)
+
+.................
+
+- sempre que trabalhar com hooks, é DENTRO da função, mas FORA de return.
+- sempre que vamos executar uma função onClick precisamos executar uma função anonima: 
+
+<button onClick={ () => setCont(cont + 1) }>Cont: {cont}</button>
+
+- useEffect sempre inicia com função anonima:
+
+useEffect(() => {
+
+});
+
+...............
+
+vamos mudar o nome na barra de navegação do site.
+
+1. criar a função anonima
+
+useEffect(() => {
+
+});
+
+2. colocar o que vamos trabalhar:
+
+    document.title = ;
+
+3. vamos colocar o nome (string) junto com uma variável, então não pode usar " ", e sim ` `, criando uma interpolação.
+
+  useEffect(() => {
+    document.title = `Cont: ${cont}`;
+  }, [cont]);
+
+obs: o $ serve para mostrar a interpolação que o ${cont} é uma variável.
+     o [cont] é o retorno da função useEffect.
+
+.....................
+
+ACESSAR API
+
+para buscar dados de uma API (como o JSONPlaceholder), usamos o fetch dentro do useEffect. isso evita que a requisição seja feita infinitas vezes a cada renderização.
+
+1. estrutura
+
+useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/users") // 1. URL da API
+    .then((response) => response.json())            // 2. converte a resposta para JSON
+    .then((data) => setUsers(data));                // 3. guarda os dados no estado
+}, []); // 4. array vazio = executa apenas UMA VEZ ao carregar a página
+
+
+2. como o react/typeScript não sabe o que vem da API, precisamos "avisar" qual o formato dos dados para não dar erro no código:
+
+// definimos o molde do objeto que vamos receber
+type User = {
+  id: number;
+  name: string;
+  address: {
+    street: string;
+  };
+};
+
+// no useState, indicamos que ele receberá um array de Usuários:
+
+const [users, setUsers] = useState<User[]>([]);
+
+
+3. após buscar os dados da API e guardá-los no estado users, precisamos exibi-los na tela. para isso, usamos o método .map() e a lógica de renderização condicional.
+
+
+  <h2>Lista de Usuários</h2>
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}> 
+          {user.name}
+          <ul>
+            <li>Email: {user.email}</li>
+            <li>Rua: {user.address.street}</li>
+            <li>Cidade: {user.address.city}</li>
+          </ul>
+        </li>
+      ))}
+    </ul>
+
+................
+
+O ARRAY DE DEPENDÊNCIAS [ ]
+o useEffect aceita um segundo argumento (o array []), que controla quando o efeito deve rodar:
+
+useEffect(() => { ... }) (sem array): roda em toda renderização. (cuidado: pode causar loops infinitos).
+
+useEffect(() => { ... }, []) (array vazio): roda apenas uma vez, quando o componente nasce (montagem). Ideal para chamadas de API.
+
+useEffect(() => { ... }, [cont]) (com variável): roda toda vez que o valor de cont mudar.
+
+.................
+
+BOAS PRÁTICAS E TRATAMENTOS
+1. tratamento de erros (.catch):
+sempre use o .catch para evitar que o site trave se a internet cair ou o servidor falhar.
+
+.catch((error) => console.error("Erro na requisição:", error));
+
+
+2. tela de carregamento:
+como a API demora alguns milissegundos para responder, usamos um operador ternário para mostrar algo ao usuário:
+
+{ users.length === 0 ? ( // ? significado: CONDIÇÃO ? VERDADEIRO : FALSO
+    <p>Carregando...</p> 
+  ) : (
+    <ul>{listas}</ul>
+  )
+}
+
+................
+
+PONTOS IMPORTANTES:
+
+users.length === 0: Verifica se o array ainda está vazio (estado inicial). se estiver, mostra a mensagem de "Carregando".
+
+.map((user) => ...): percorre cada objeto dentro do array users e transforma cada um em um item de lista (<li>).
+
+key={user.id}: obrigatório! o react precisa dessa chave única para identificar cada item. se você esquecer, ele dará um aviso no console.
+
+acesso a objetos aninhados: como o endereço vem dentro de um objeto da API, acessamos usando o ponto: user.address.street.
