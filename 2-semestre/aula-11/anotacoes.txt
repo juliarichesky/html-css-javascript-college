@@ -1,0 +1,245 @@
+> instalação do tailwindcss:
+
+npm install tailwindcss @tailwindcss/vite
+
+> mexer no vite.config.ts e adicionar o tailwind:
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
+
+> importar o tailwindcss pro App.css:
+
+@import "tailwindcss";
+
+..........................................................
+
+useContext
+
+- variáveis globais que compartilhamos informações.
+- criar contexto e fornecer valor para os componentes.
+- usar para compartilhar informações, para quando os componentes precisam acessar os mesmos dados.
+- usa-se quando precisa verificar quando o usuário está online ou não, temas escuros/claros, gravar infos de uma carrinho de compras...
+
+............................................................
+
+=> em App.css o professor pede para colocarmos duas regras:
+
+@import "tailwindcss";
+
+body {
+  @apply bg-white text-black;
+}
+
+.dark body {
+  @apply bg-gray-900 text-white;
+}
+
+=> e em src vamos criar uma pasta chamada context e um arquivo chamado ThemeProvider.tsx e vamos criar nosso contexto de informação:
+
+export const ThemeProvider() => {
+    
+}
+
+=> vai ficar assim colocando as infos
+
+import { useState } from "react"
+
+export const ThemeProvider() => {
+    const [theme, setTheme] = useState();
+    return(
+        <ThemeContext.Provider>
+        </ThemeContext.Provider>
+    )
+}
+
+=> precisamos colocar {children} dentro do paramentro ThemeProvider e dizer que children veio de ReactNode
+
+export const ThemeProvider = ({children} : {childer : ReactNode }) => {
+    const [theme, setTheme] = useState();
+    return(
+        <ThemeContext.Provider>
+        {children}
+        </ThemeContext.Provider>
+    )
+}
+
+=> importar o ThemeContext e criar o ThemeContext.tsx dentro da pasta context (ele serve para criar as interfaces para saber se vamos usar o claro ou escuro)
+
+import { ThemeContext } from "./ThemeContext"
+
+=> agora precisamos receber as infos se é tema claro ou escuro
+=> ele vai receber as infos primeiro no tema claro:
+
+const [theme, setTheme] = useState<Theme>("light");
+
+=> dentro de Theme.Context.tsx vamos criar:
+
+import { createContext } from "react";
+
+export type Theme = "light" | "dark";
+interface ThemeContextType{
+    theme : Theme;
+    toggleTheme : () => void;
+}
+
+export const ThemeContext = createContext<ThemeContextType>({ 
+    theme: "light",
+    toggleTheme : () => { },
+})
+
+=> em Theme.Provider.tsx fica assim:
+
+import { useState, type ReactNode } from "react"
+import { ThemeContext, type Theme } from "./ThemeContext";
+ 
+export const ThemeProvider = ({ children } : {children : ReactNode })=>{
+ 
+    const [theme,setTheme] = useState<Theme>("light");
+ 
+    const toggleTheme = () =>{
+        setTheme((prev) =>( prev === "light" ? "dark" : "light"))
+    }
+ 
+    return(
+        <ThemeContext.Provider value={{ theme , toggleTheme }}>
+            { children }
+        </ThemeContext.Provider>
+    )
+}
+
+=> vamos gravar a informação no navegador, vamos usar useEffect
+=> vamos modificar a classe que criamos antes no css e gravar a informação no navegador usando localStorage
+=> ARMAZENANDO INFOS NO NAVEGADOR
+=> dentro de ThemeProvider.tsx vai ficar assim:
+
+import { useEffect, useState, type ReactNode } from "react"
+import { ThemeContext, type Theme } from "./ThemeContext";
+ 
+export const ThemeProvider = ({ children } : {children : ReactNode })=>{
+ 
+    const [theme,setTheme] = useState<Theme>("light");
+ 
+    const toggleTheme = () =>{
+        setTheme((prev) =>( prev === "light" ? "dark" : "light"))
+    }
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        localStorage.setItem("theme", theme);
+    }, [theme])
+ 
+    return(
+        <ThemeContext.Provider value={{ theme , toggleTheme }}>
+            { children }
+        </ThemeContext.Provider>
+    )
+}
+
+=> agora vamos capturar a informação criando mais um useEffect:
+
+import { useEffect, useState, type ReactNode } from "react"
+import { ThemeContext, type Theme } from "./ThemeContext";
+ 
+export const ThemeProvider = ({ children } : {children : ReactNode })=>{
+ 
+    const [theme,setTheme] = useState<Theme>("light");
+ 
+    const toggleTheme = () =>{
+        setTheme((prev) =>( prev === "light" ? "dark" : "light"))
+    }
+
+    useEffect(() => {
+        const stored = localStorage.getItem("theme") as Theme;
+        if (stored) setTheme(stored)
+    }, [])
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        localStorage.setItem("theme", theme);
+    }, [theme])
+ 
+    return(
+        <ThemeContext.Provider value={{ theme , toggleTheme }}>
+            { children }
+        </ThemeContext.Provider>
+    )
+}
+
+=> vamos criar o botao dentro de App.tsx
+
+<button onClick={toggleTheme}>Alternar Tema</button>
+
+=> vamos importar o ThemeProvider.tsx para App.tsx
+
+import { ThemeContext } from './assets/context/ThemeContext'; 
+
+=> agora vamos informar que essa informação faz parte de um contexto
+
+import { useContext } from 'react';
+import './App.css'
+import { ThemeContext } from './assets/context/ThemeContext';
+
+const App = () => {
+
+  const {theme, toggleTheme} = useContext(ThemeContext)
+
+  return(
+    <>
+    <h1>Hello World!!</h1>
+        <button onClick={toggleTheme}>Alternar Tema</button>
+    </>
+  )
+}
+export default App;
+
+=> agora vamos usar o provedor no main.tsx
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import { ThemeProvider } from "./assets/context/ThemeProvider.tsx";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </StrictMode>,
+);
+
+=> agora vamos criar um postcss para fazer com que ele entenda que pode usar o prefixo @apply
+
+npm install -D postcss autoprefixer
+
+=> criar arquvio dentro de src chamado postcss.config.ts
+
+import tailwindcss from "@tailwindcss/vite";
+
+export default {
+  puglins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+
+...............................
+
+PS: tivemos que fazer alterações porque não estava funcionando.
+
+=> modificar no ThemeProvider.tsx (aqui nas anotações)
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+
+    localStorage.setItem("theme", theme);
+  }, [theme]);
