@@ -1,0 +1,134 @@
+useEffect + localStorage
+
+objetivo da aula
+
+- usar o useEffect
+- armazenar dados no localStorage
+- recuperar dados salvos mesmo após atualizar a página
+- simular um sistema simples de login
+................................................................
+
+useEffect
+hook do react que executa efeitos colaterais, como:
+
+- atualizar dados
+- buscar informações
+- interagir com o navegador (ex: localStorage)
+
+................................................................
+
+localStorage
+armazena dados no navegador do usuário.
+
+- os dados não somem ao atualizar a página
+- funciona com chave e valor (string)
+
+exemplo:
+localStorage.setItem("nome", "Murilo");
+localStorage.getItem("nome");
+
+................................................................
+
+estrutura do código
+=> estados criados
+
+- msg → mensagem exibida na tela
+- nome → nome digitado pelo usuário
+- usuario → nome usado no login
+- logado → controla se o usuário está logado
+
+................................................................
+
+etapa 1: mensagem ao carregar o componente
+
+useEffect(() => {
+setMsg("Componente Carregado");
+}, []);
+
+-> executa apenas uma vez (quando o componente abre)
+
+___________________________________________________________
+
+etapa 2: recuperando dados do localStorage
+
+const nomeSalvo = localStorage.getItem("nome");
+
+useEffect(() => {
+if (nomeSalvo) {
+setNome(nomeSalvo);
+}
+}, []);
+
+-> quando a página abre:
+
+- verifica se existe um nome salvo
+- se existir, coloca no input automaticamente
+
+___________________________________________________________
+
+etapa 3: salvando no localStorage
+
+useEffect(() => {
+localStorage.setItem("nome", nome);
+}, [nome]);
+
+-> sempre que o nome mudar:
+
+- salva automaticamente no navegador
+
+___________________________________________________________
+
+etapa 4: input de nome
+
+<input type="text" ... />
+
+-> o usuário digita e:
+
+- atualiza o estado nome
+- mostra na tela: "Olá, {nome}"
+
+se estiver vazio:
+-> mostra "visitante"
+
+___________________________________________________________
+
+etapa 5: simulando Login
+
+função entrar:
+
+function entrar(){
+if(usuario.trim() != ""){
+localStorage.setItem("usuario", usuario);
+setLogado(true);
+}
+}
+
+-> se o campo não estiver vazio:
+
+- salva o usuário no localStorage
+- marca como logado
+
+___________________________________________________________
+
+etapa 6: renderização condicional
+
+{ logado ? ( ... ) : ( ... ) }
+
+-> se logado:
+
+- mostra mensagem de boas-vindas
+- botão "Sair"
+
+-> se NÃO logado:
+
+- mostra input
+- botão de login
+
+....................................................................
+
+OBS:
+
+- localStorage só salva **strings**
+- useEffect com [] roda apenas 1 vez
+- useEffect com [variável] roda quando ela muda
+- dados permanecem mesmo após atualizar a página
