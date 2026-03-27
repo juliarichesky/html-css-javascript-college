@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miniature World - Coleções de Miniaturas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      .filter-btn.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      .modal {
+        display: none;
+        backdrop-filter: blur(5px);
+      }
+      .modal.active {
+        display: flex;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">SharePoint App</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">5900.00000000000</mso:Order>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">SharePoint App</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ReferenceId msdt:dt="string"></mso:ReferenceId>
+<mso:ContentTypeId msdt:dt="string">0x01010063583F3DBB3C324086F3A5514B39C114</mso:ContentTypeId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect bg-white/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-2">
+            <i data-lucide="box" class="w-8 h-8 text-purple-600"></i>
+            <span class="text-xl font-bold gradient-text">Miniature World</span>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="text-gray-700 hover:text-purple-600 transition"
+              >Início</a
+            >
+            <a
+              href="#colecoes"
+              class="text-gray-700 hover:text-purple-600 transition"
+              >Coleções</a
+            >
+            <a
+              href="#categorias"
+              class="text-gray-700 hover:text-purple-600 transition"
+              >Categorias</a
+            >
+            <a
+              href="#sobre"
+              class="text-gray-700 hover:text-purple-600 transition"
+              >Sobre</a
+            >
+            <button
+              class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition flex items-center gap-2"
+            >
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+              <span>Carrinho</span>
+              <span
+                id="cart-count"
+                class="bg-white text-purple-600 text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                >0</span
+              >
+            </button>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div class="px-4 py-2 space-y-2">
+          <a href="#home" class="block py-2 text-gray-700">Início</a>
+          <a href="#colecoes" class="block py-2 text-gray-700">Coleções</a>
+          <a href="#categorias" class="block py-2 text-gray-700">Categorias</a>
+          <a href="#sobre" class="block py-2 text-gray-700">Sobre</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="pt-24 pb-12 lg:pt-32 lg:pb-24 bg-gradient-to-br from-purple-50 via-white to-blue-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6 animate-fade-in">
+            <div
+              class="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-medium"
+            >
+              <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
+              Nova Coleção 2026
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+              Descubra o Mundo das <span class="gradient-text">Miniaturas</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              Explore nossa coleção exclusiva de miniaturas meticulosamente
+              criadas. Desde carros em escala até casas de bonecas detalhadas,
+              encontre a peça perfeita para sua coleção.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button
+                onclick="scrollToSection('colecoes')"
+                class="bg-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-purple-700 transition transform hover:scale-105 flex items-center gap-2"
+              >
+                Explorar Coleções
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </button>
+              <button
+                onclick="scrollToSection('sobre')"
+                class="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-purple-50 transition"
+              >
+                Saiba Mais
+              </button>
+            </div>
+            <div class="flex items-center gap-8 pt-4">
+              <div>
+                <div class="text-2xl font-bold text-gray-900">2,000+</div>
+                <div class="text-sm text-gray-600">Miniaturas</div>
+              </div>
+              <div class="w-px h-12 bg-gray-300"></div>
+              <div>
+                <div class="text-2xl font-bold text-gray-900">50+</div>
+                <div class="text-sm text-gray-600">Coleções</div>
+              </div>
+              <div class="w-px h-12 bg-gray-300"></div>
+              <div>
+                <div class="text-2xl font-bold text-gray-900">15k+</div>
+                <div class="text-sm text-gray-600">Clientes</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 rounded-3xl transform rotate-3 opacity-20"
+            ></div>
+            <img
+              src="http://static.photos/craft/640x360/123"
+              alt="Miniaturas em Destaque"
+              class="relative rounded-3xl shadow-2xl w-full object-cover"
+            />
+            <div
+              class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center"
+                >
+                  <i
+                    data-lucide="star"
+                    class="w-6 h-6 text-purple-600 fill-current"
+                  ></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Mais Vendido</div>
+                  <div class="text-sm text-gray-600">Coleção Vintage</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categorias" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Categorias Populares
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Escolha entre nossas diversas categorias de miniaturas
+            cuidadosamente selecionadas
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="group cursor-pointer" onclick="filterByCategory('all')">
+            <div
+              class="relative overflow-hidden rounded-2xl aspect-square mb-3"
+            >
+              <img
+                src="http://static.photos/workspace/320x240/1"
+                alt="Todos"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center"
+              >
+                <i data-lucide="grid" class="w-8 h-8 text-white"></i>
+              </div>
+            </div>
+            <h3 class="font-semibold text-center">Todos</h3>
+            <p class="text-sm text-gray-500 text-center">2000+ itens</p>
+          </div>
+          <div
+            class="group cursor-pointer"
+            onclick="filterByCategory('veiculos')"
+          >
+            <div
+              class="relative overflow-hidden rounded-2xl aspect-square mb-3"
+            >
+              <img
+                src="http://static.photos/automotive/320x240/2"
+                alt="Veículos"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center"
+              >
+                <i data-lucide="car" class="w-8 h-8 text-white"></i>
+              </div>
+            </div>
+            <h3 class="font-semibold text-center">Veículos</h3>
+            <p class="text-sm text-gray-500 text-center">450+ modelos</p>
+          </div>
+          <div class="group cursor-pointer" onclick="filterByCategory('casas')">
+            <div
+              class="relative overflow-hidden rounded-2xl aspect-square mb-3"
+            >
+              <img
+                src="http://static.photos/architecture/320x240/3"
+                alt="Casas"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center"
+              >
+                <i data-lucide="home" class="w-8 h-8 text-white"></i>
+              </div>
+            </div>
+            <h3 class="font-semibold text-center">Casas de Boneca</h3>
+            <p class="text-sm text-gray-500 text-center">180+ kits</p>
+          </div>
+          <div
+            class="group cursor-pointer"
+            onclick="filterByCategory('figuras')"
+          >
+            <div
+              class="relative overflow-hidden rounded-2xl aspect-square mb-3"
+            >
+              <img
+                src="http://static.photos/gaming/320x240/4"
+                alt="Figuras"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+              />
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center"
+              >
+                <i data-lucide="users" class="w-8 h-8 text-white"></i>
+              </div>
+            </div>
+            <h3 class="font-semibold text-center">Figuras de Ação</h3>
+            <p class="text-sm text-gray-500 text-center">320+ personagens</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="sticky top-16 z-40 bg-white border-y shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex flex-wrap gap-2" id="filter-buttons">
+            <button
+              class="filter-btn active px-4 py-2 rounded-full border border-gray-300 text-sm font-medium transition"
+              data-filter="all"
+            >
+              Todos
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-gray-300 text-sm font-medium transition"
+              data-filter="veiculos"
+            >
+              Veículos
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-gray-300 text-sm font-medium transition"
+              data-filter="casas"
+            >
+              Casas de Boneca
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-gray-300 text-sm font-medium transition"
+              data-filter="figuras"
+            >
+              Figuras
+            </button>
+            <button
+              class="filter-btn px-4 py-2 rounded-full border border-gray-300 text-sm font-medium transition"
+              data-filter="natureza"
+            >
+              Natureza
+            </button>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <i
+                data-lucide="search"
+                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+              ></i>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Buscar miniaturas..."
+                class="pl-10 pr-4 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 w-64"
+              />
+            </div>
+            <select
+              id="sort-select"
+              class="border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+            >
+              <option value="newest">Mais Recentes</option>
+              <option value="price-low">Menor Preço</option>
+              <option value="price-high">Maior Preço</option>
+              <option value="popular">Mais Populares</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="colecoes" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-end mb-8">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900">Nossas Coleções</h2>
+            <p class="text-gray-600 mt-2">
+              Miniaturas em escala realista com detalhes impressionantes
+            </p>
+          </div>
+          <div class="text-sm text-gray-500">
+            Mostrando
+            <span id="showing-count" class="font-semibold text-purple-600"
+              >12</span
+            >
+            de <span id="total-count">12</span> itens
+          </div>
+        </div>
+
+        <div
+          id="gallery-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
+          <!-- Items will be injected by JavaScript -->
+        </div>
+
+        <div class="mt-12 text-center">
+          <button
+            id="load-more"
+            class="bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition"
+          >
+            Carregar Mais
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition">
+            <div
+              class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="truck" class="w-8 h-8 text-purple-600"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Frete Grátis</h3>
+            <p class="text-gray-600 text-sm">Para compras acima de R$ 200</p>
+          </div>
+          <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="shield-check" class="w-8 h-8 text-blue-600"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Garantia de Qualidade</h3>
+            <p class="text-gray-600 text-sm">
+              30 dias de garantia em todos os produtos
+            </p>
+          </div>
+          <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition">
+            <div
+              class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="package" class="w-8 h-8 text-green-600"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Embalagem Segura</h3>
+            <p class="text-gray-600 text-sm">
+              Proteção especial para miniaturas frágeis
+            </p>
+          </div>
+          <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition">
+            <div
+              class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <i data-lucide="headphones" class="w-8 h-8 text-orange-600"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Suporte Especializado</h3>
+            <p class="text-gray-600 text-sm">Atendimento por colecionadores</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section
+      id="sobre"
+      class="py-16 bg-gradient-to-br from-purple-50 to-blue-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="relative">
+            <img
+              src="http://static.photos/craft/640x360/456"
+              alt="Sobre Nós"
+              class="rounded-3xl shadow-2xl w-full"
+            />
+            <div
+              class="absolute -bottom-6 -right-6 bg-purple-600 text-white p-6 rounded-2xl shadow-xl"
+            >
+              <div class="text-3xl font-bold">10+</div>
+              <div class="text-sm opacity-90">Anos de Experiência</div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900">
+              Paixão por Miniaturas
+            </h2>
+            <p class="text-gray-600 leading-relaxed">
+              Somos uma equipe de colecionadores apaixonados que entende a
+              importância de cada detalhe. Nossa missão é conectar você com as
+              miniaturas mais exclusivas do mundo, desde peças artesanais até
+              edições limitadas de fabricantes renomados.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Curadoria Especializada</h4>
+                  <p class="text-sm text-gray-600">
+                    Cada peça é selecionada por especialistas
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Edições Limitadas</h4>
+                  <p class="text-sm text-gray-600">
+                    Acesso exclusivo a miniaturas raras
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Comunidade Ativa</h4>
+                  <p class="text-sm text-gray-600">
+                    Participe de eventos e workshops
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition"
+            >
+              Conheça Nossa História
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-4">Receba Novidades Exclusivas</h2>
+        <p class="text-gray-400 mb-8">
+          Cadastre-se para receber alertas de novas coleções e promoções
+          especiais
+        </p>
+        <form
+          class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+          onsubmit="
+            event.preventDefault();
+            showToast('Cadastro realizado com sucesso!');
+          "
+        >
+          <input
+            type="email"
+            placeholder="Seu melhor e-mail"
+            required
+            class="flex-1 px-6 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+          <button
+            type="submit"
+            class="bg-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition whitespace-nowrap"
+          >
+            Cadastrar
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i data-lucide="box" class="w-6 h-6 text-purple-600"></i>
+              <span class="text-lg font-bold">Miniature World</span>
+            </div>
+            <p class="text-sm text-gray-600">
+              Sua loja especializada em miniaturas de alta qualidade desde 2014.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Categorias</h4>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="#" class="hover:text-purple-600">Veículos</a></li>
+              <li>
+                <a href="#" class="hover:text-purple-600">Casas de Boneca</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-purple-600">Figuras de Ação</a>
+              </li>
+              <li><a href="#" class="hover:text-purple-600">Natureza</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Ajuda</h4>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="#" class="hover:text-purple-600">FAQ</a></li>
+              <li><a href="#" class="hover:text-purple-600">Envio</a></li>
+              <li><a href="#" class="hover:text-purple-600">Devoluções</a></li>
+              <li><a href="#" class="hover:text-purple-600">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Redes Sociais</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition"
+              >
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition"
+              >
+                <i data-lucide="facebook" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition"
+              >
+                <i data-lucide="youtube" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600"
+        >
+          <p>&copy; 2026 Miniature World. Todos os direitos reservados.</p>
+          <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-purple-600">Termos de Uso</a>
+            <a href="#" class="hover:text-purple-600"
+              >Política de Privacidade</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div
+      id="product-modal"
+      class="modal fixed inset-0 z-50 items-center justify-center p-4 bg-black/50"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative animate-fade-in"
+      >
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition z-10"
+        >
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="grid md:grid-cols-2 gap-8 p-8">
+          <div class="space-y-4">
+            <img
+              id="modal-image"
+              src=""
+              alt=""
+              class="w-full rounded-2xl aspect-square object-cover"
+            />
+            <div class="grid grid-cols-4 gap-2">
+              <div
+                class="aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer hover:opacity-75 transition"
+              >
+                <img id="thumb-1" src="" class="w-full h-full object-cover" />
+              </div>
+              <div
+                class="aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer hover:opacity-75 transition"
+              >
+                <img id="thumb-2" src="" class="w-full h-full object-cover" />
+              </div>
+              <div
+                class="aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer hover:opacity-75 transition"
+              >
+                <img id="thumb-3" src="" class="w-full h-full object-cover" />
+              </div>
+              <div
+                class="aspect-square rounded-lg bg-gray-100 overflow-hidden cursor-pointer hover:opacity-75 transition"
+              >
+                <img id="thumb-4" src="" class="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div>
+              <span
+                id="modal-category"
+                class="text-sm text-purple-600 font-semibold uppercase tracking-wide"
+              ></span>
+              <h2
+                id="modal-title"
+                class="text-2xl font-bold text-gray-900 mt-2"
+              ></h2>
+              <div class="flex items-center gap-2 mt-2">
+                <div class="flex text-yellow-400">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <span class="text-sm text-gray-500">(128 avaliações)</span>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span
+                id="modal-price"
+                class="text-3xl font-bold text-purple-600"
+              ></span>
+              <span class="text-gray-400 line-through text-lg">R$ 299,00</span>
+            </div>
+            <p id="modal-description" class="text-gray-600 leading-relaxed"></p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between py-2 border-b">
+                <span class="text-gray-600">Escala</span>
+                <span id="modal-scale" class="font-semibold"></span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b">
+                <span class="text-gray-600">Material</span>
+                <span id="modal-material" class="font-semibold"></span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b">
+                <span class="text-gray-600">Dimensões</span>
+                <span id="modal-dimensions" class="font-semibold"></span>
+              </div>
+            </div>
+            <div class="flex gap-4 pt-4">
+              <div class="flex items-center border rounded-full">
+                <button
+                  class="px-4 py-2 hover:bg-gray-100 rounded-l-full"
+                  onclick="adjustQuantity(-1)"
+                >
+                  -
+                </button>
+                <span id="modal-quantity" class="px-4 font-semibold">1</span>
+                <button
+                  class="px-4 py-2 hover:bg-gray-100 rounded-r-full"
+                  onclick="adjustQuantity(1)"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                onclick="addToCartFromModal()"
+                class="flex-1 bg-purple-600 text-white py-3 rounded-full font-semibold hover:bg-purple-700 transition flex items-center justify-center gap-2"
+              >
+                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-full shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3"
+    >
+      <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
+      <span id="toast-message">Item adicionado ao carrinho!</span>
+    </div>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

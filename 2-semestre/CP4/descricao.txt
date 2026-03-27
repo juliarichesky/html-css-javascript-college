@@ -1,0 +1,1 @@
+no dia 27/03/2025 fiz meu quarto checkpoint em front-end, onde o objetivo era transformar um site em html/css puro em react, usando componentes, tailwindcss, css global, hooks.

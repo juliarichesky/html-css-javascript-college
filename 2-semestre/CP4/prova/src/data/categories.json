@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "icon": "grid",
+    "title": "Todos",
+    "alt": "Todos",
+    "info": "2000+ itens",
+    "img": "http://static.photos/workspace/320x240/1"
+  },
+  {
+    "id": 2,
+    "icon": "car",
+    "title": "Veículos",
+    "alt": "Veículos",
+    "info": "450+ modelos",
+    "img": "http://static.photos/automotive/320x240/2"
+  },
+  {
+    "id": 3,
+    "icon": "home",
+    "title": "Casas de Boneca",
+    "alt": "Casas de Boneca",
+    "info": "180+ kits",
+    "img": "http://static.photos/architecture/320x240/3"
+  },
+  {
+    "id": 4,
+    "icon": "users",
+    "title": "Figuras de Ação",
+    "alt": "Figuras de Ação",
+    "info": "320+ personagens",
+    "img": "http://static.photos/gaming/320x240/4"
+  }
+]

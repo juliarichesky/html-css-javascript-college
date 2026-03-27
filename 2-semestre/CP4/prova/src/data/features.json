@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "icon": "truck",
+    "title": "Frete Grátis",
+    "alt": "Frete Grátis",
+    "info": "Para compras acima de R$ 200",
+    "classe": "bg-purple-100",
+    "color-text": "text-purple-600"
+  },
+  {
+    "id": 2,
+    "icon": "shield",
+    "title": "Garantia de Qualidade",
+    "alt": "Garantia de Qualidade",
+    "info": "30 dias de garantia em todos os produtos",
+    "classe": "bg-blue-100",
+    "color-text": "text-blue-600"
+  },
+  {
+    "id": 3,
+    "icon": "package",
+    "title": "Embalagem Segura",
+    "alt": "Embalagem Segura",
+    "info": "Proteção especial para minaturas frágeis",
+    "classe": "bg-green-100",
+    "color-text": "text-green-600"
+  },
+  {
+    "id": 4,
+    "icon": "headphones",
+    "title": "Suporte Especializado",
+    "alt": "Suporte Especializado",
+    "info": "Atendimento por colecionadores",
+    "classe": "bg-orange-100",
+    "color-text": "text-orange-600"
+  }
+]
