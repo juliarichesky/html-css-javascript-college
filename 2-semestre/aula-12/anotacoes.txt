@@ -1,0 +1,332 @@
+HookForm
+É uma biblioteca para gerenciamento de dados.
+
+- menos renderização de componentes.
+- código menor
+- é específico do HookForm, não é nativo do react.
+
+..............................................
+
+Funções para facilitar validação:
+
+- register: é uma função que registra os campos do formulário para o 
+gerenciamento interno.
+
+- handleSubmit: função que processa o envio do formulário.
+
+- reset: é uma função que redefine os campos do formulário para seus 
+valores iniciais.
+
+- formState: é uma propriedade com informações sobre erros 
+(errors), estado de submissão (isSubmitting), etc.reset → permite 
+limpar ou redefinir os valores do formulário.
+
+- errors: é uma propriedade do objeto formState que contém 
+informações sobre os erros de validação de cada campo. 
+
+...............................................
+
+Validações suportadas:
+
+- min: esta opção DEFINE O VALOR MÍNIMO ACEITÁVEL para um campo numérico. se o valor do campo for menor que o valor mínimo especificado, a validação falhará e a mensagem de erro associada será exibida.
+
+- max: similar ao min, esta opção DEFINE O VALOR MÁXIMO ACEITÁVEL para um campo numérico. se o valor do campo for maior que o valor máximo especificado, a validação falhará e a mensagem de erro associada será exibida.
+
+- maxlength: esta opção DEFINE O NÚMERO MÁXIMO DE CARACTERES permitidos para um campo de texto. se o número de caracteres exceder o limite especificado, a validação falhará e a mensagem de erro associada será exibida.
+
+- minlength: similar ao maxlength, esta opção DEFINE O NÚMERO MÍNIMO de caracteres permitidos para um campo de texto. se o número de caracteres for menor que o limite especificado, a validação falhará e a mensagem de erro associada será exibida.
+
+..............................................
+
+para instalar usa-se o comando: npm install react-hook-form
+
+1. criar um formulário comum
+
+const App = () => {
+  return(
+    <>
+    <form>
+      <label htmlFor="txtName">Nome:</label>
+      <input type="text" />
+      <br />
+      <label htmlFor="txtSobrenome">Sobrenome:</label>
+      <input type="text" />
+      <br/>
+      <button>Enviar</button>
+    </form>
+    </>
+  )
+}
+export default App;
+
+.....................................................
+
+2. importar o hookForm. ele é o useForm.
+
+import { useForm } from "react-hook-form";
+
+......................................................
+
+3. criar o type dados embaixo do import, não dentro da função.
+
+type Dados = {
+  nome: string;
+  sobrenome: string;
+};
+
+......................................................
+
+4. configurar o hook dentro da função. vamos criar a const. imagine que o useForm é um gerente de escritório. quando você o chama, ele te entrega várias ferramentas para controlar o que os usuários digitam.
+
+=> ele é colocado dentro da função, antes do return.
+
+import { useForm } from "react-hook-form";
+
+type Dados = {
+  nome: string;
+  sobrenome: string;
+};
+
+const App = () => {
+  const { register } = useForm<Dados>(); // adicionamos aqui. ele chama o tipo Dados
+  
+  return(
+    <>
+    <form>
+      <label htmlFor="txtName">Nome:</label>
+      <input type="text" />
+      <br />
+      <label htmlFor="txtSobrenome">Sobrenome:</label>
+      <input type="text" />
+      <br/>
+      <button>Enviar</button>
+    </form>
+    </>
+  )
+}
+export default App;
+
+......................................................
+
+5. configurar o register
+
+=> o primeiro passo é sempre o register. por padrão, um <input /> comum do HTML não "fala" com o React. o register é como se fosse um crachá de identificação que você coloca no input. estamos atribuindo nosso tipo ao nosso registro.
+
+=> os inputs ainda estão soltos, eles não sabem que o useForm existe. então, precisamos conectar o hookForm aos inputs, usando o register:
+
+=> dentro de cada input, vamos adicionar o atributo {...register("nomeDoCampo")}. esse nome dentro das aspas precisa ser o mesmo que definimos no type Dados.
+
+    <form>
+      <label htmlFor="txtName">Nome:</label>
+      <input type="text" {...register("nome")} />
+      <br />
+      <label htmlFor="txtSobrenome">Sobrenome:</label>
+      <input type="text" {...register("sobrenome")} />
+      <br/>
+      <button>Enviar</button>
+    </form>
+
+=> esse "…" é um operador, ele mostra que vai ter mais informações antes.
+=> quando você escreve {...register("nome")}, você está dizendo para o React Hook Form: "ei, cuida desse input para mim! sempre que alguém digitar algo aqui, guarde o valor dentro da gaveta chamada 'nome'."
+
+=> agora os inputs já estão "conversando" com o Hook. mas, se você clicar no botão "Enviar", a página ainda vai dar aquele "refresh" (recarregar) e nada vai acontecer no console.
+
+.......................................................
+
+6. configurar o required
+
+=> não podemos enviar um campo vazio, então precisamos adicionar o argumento required, onde é obrigatório escrever algo para enviar, vai ficar assim:
+
+    <form>
+      <label htmlFor="txtName">Nome:</label>
+      <input type="text" {...register("nome", {required: true})} />
+      <br />
+      <label htmlFor="txtSobrenome">Sobrenome:</label>
+      <input type="text" {...register("sobrenome", {required: true})} />
+      <br/>
+      <button>Enviar</button>
+    </form>
+
+=> até agora, o register só servia para "observar" o que era digitado. ao colocar o { required: true }, demos uma regra para o campo.
+=> mas atenção: se tentar clicar no botão de "Enviar" agora, ele ainda não vai "barrar" o envio visualmente, porque o formulário ainda não tem um juiz para apitar a falta.
+
+.................................................
+
+7. configurar o handleSubmit
+
+=> agora que os campos tem regras (o required), precisamos do handleSubmit para atuar como o juiz que decide se as regras foram cumpridas.
+=> vamos declarar o handleSubmit e criar a função de envio.
+
+=> importamos o handleSubmit
+
+import { useForm, type SubmitHandler } from "react-hook-form";
+
+=> no typescript, toda vez que você usa um "nome chique" (um tipo ou interface) como o SubmitHandler, você precisa importar ele explicitamente da biblioteca. sem isso, o VS Code vai sublinhar o onSubmit de vermelho e dizer que não encontrou o nome. por isso, usamos o "type".
+
+=> agora, lá na linha onde chamou o useForm, adicionamos o handleSubmit, é ele quem vai ler aquele required: true que colocamos nos inputs e decidir se o formulário pode ser enviado:
+
+const { register, handleSubmit } = useForm<Dados>();
+
+=> vamos criar a função onSubmit
+=> essa é a função que será executada apenas se o formulário estiver todo certinho. ela recebe os dados automaticamente.
+
+const onSubmit: SubmitHandler<Dados> = (data) => {
+  console.log("Dados prontos para o envio:", data);
+}
+
+=> agora precisamos dizer ao formulário usar ele. dentro de return, fazemos a conexão:
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="txtName">Nome:</label>
+        <input type="text" {...register("nome", { required: true })} />
+        <br />
+        <label htmlFor="txtSobrenome">Sobrenome:</label>
+        <input type="text" {...register("sobrenome", { required: true })} />
+        <br />
+        <button>Enviar</button>
+      </form>
+
+=> se tudo der certo, agora ele nao vai recarregar a página, e o console não mostrar nada, quer dizer que o handleSubmit deu certo.
+
+........................................................
+
+8. configurar o errors.
+
+=> o usuário precisa saber por que o formulário não foi enviado. para isso, vamos usar o formState: { errors }.
+
+=> primeiro, precisamos extrair o objeto de erros lá daquela nossa linha principal do useForm. vamos ajustar a linha:
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Dados>(); //
+
+=> agora, vamos usar uma lógica do React: "se existir um erro, mostre esse texto". vamos colocar isso logo abaixo de cada input.
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="txtName">Nome:</label>
+        <input type="text" {...register("nome", { required: true })} />
+        {errors.nome && <span style={{ color: "red" }}>Nome obrigatório!</span>}
+        <br />
+        <label htmlFor="txtSobrenome">Sobrenome:</label>
+        <input type="text" {...register("sobrenome", { required: true })} />
+        {errors.sobrenome && (
+          <span style={{ color: "red" }}>Sobrenome obrigatório!</span>
+        )}
+        <br />
+        <button>Enviar</button>
+      </form>
+
+=> errors: é um objeto que o Hook Form preenche automaticamente. se o campo "nome" falhar na validação (ficar vazio), ele cria uma propriedade errors.nome
+
+=> errors.nome && ...: no React, isso significa: "só execute o que vem depois dos && se o que vem antes for verdadeiro".
+- e o campo estiver preenchido ➡️ errors.nome é falso ➡️ O <span> não aparece.
+- se o campo estiver vazio ➡️ errors.nome existe ➡️ O <span> aparece na hora!
+
+......................................................
+
+9. adicionar o minlength e o maxlength
+
+=> são regras de tamanho
+=> para o erro aparecer bonitinho na tela, não basta colocar o número; precisamos de um objeto que contenha o valor e a mensagem.
+
+=> a estrutura é sempre assim:
+
+nomeDaRegra: { value: número, message: "texto" }
+
+=> vamos aplicar depois do required, DENTRO do {}, aplicando as regras:
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="txtName">Nome:</label>
+        <input
+          type="text"
+          {...register("nome", {
+            required: true,
+            minLength: { value: 3, message: "Mínimo de 3 caracteres" },
+            maxLength: { value: 20, message: "Máximo de 20 caracteres" },
+          })}
+        />
+        {errors.nome && <span style={{ color: "red" }}>Nome obrigatório!</span>}
+        <br />
+        <label htmlFor="txtSobrenome">Sobrenome:</label>
+        <input
+          type="text"
+          {...register("sobrenome", {
+            required: true,
+            minLength: { value: 3, message: "Mínimo de 3 caracteres" },
+            maxLength: { value: 20, message: "Máximo de 20 caracteres" },
+          })}
+        />
+        {errors.sobrenome && (
+          <span style={{ color: "red" }}>Sobrenome obrigatório!</span>
+        )}
+        <br />
+        <button>Enviar</button>
+      </form>
+
+=> mas, dessa forma, se o usuário digitar só 1 letra, vai aparecer "Nome obrigatório!". (fica confuso, né? porque ele digitou algo, só foi curto demais).
+
+=> para corrigir isso, e aparecer a mensagem de mínimo e máximo de caracteres, precisamos adicionar {erros.nome.message} no campo onde antes estava escrito "Nome obrigatório":
+
+<form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="txtName">Nome:</label>
+        <input
+          type="text"
+          {...register("nome", {
+            required: true,
+            minLength: { value: 3, message: "Mínimo de 3 caracteres" },
+            maxLength: { value: 20, message: "Máximo de 20 caracteres" },
+          })}
+        />
+        {errors.nome && <span style={{ color: "red" }}>{errors.nome.message}</span>}
+        <br />
+        <label htmlFor="txtSobrenome">Sobrenome:</label>
+        <input
+          type="text"
+          {...register("sobrenome", {
+            required: true,
+            minLength: { value: 3, message: "Mínimo de 3 caracteres" },
+            maxLength: { value: 20, message: "Máximo de 20 caracteres" },
+          })}
+        />
+        {errors.sobrenome && (
+          <span style={{ color: "red" }}>{errors.sobrenome.message}</span>
+        )}
+        <br />
+        <button>Enviar</button>
+      </form>
+
+=> mas agora não aparece a mensagem... então precisamos trocar o valor de "true" no required pela mensagem que deve aparecer.
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="txtName">Nome:</label>
+        <input
+          type="text"
+          {...register("nome", {
+            required: "Nome é obrigatório!",
+            minLength: { value: 3, message: "Mínimo de 3 caracteres" },
+            maxLength: { value: 20, message: "Máximo de 20 caracteres" },
+          })}
+        />
+        {/* tradução: se houver erro no campo 'nome', mostre o span */}
+        {errors.nome && (
+          <span style={{ color: "red" }}>{errors.nome.message}</span>
+        )}
+        <br />
+        <label htmlFor="txtSobrenome">Sobrenome:</label>
+        {/* tradução: se houver erro no campo 'sobrenome', mostre o span */}
+        <input
+          type="text"
+          {...register("sobrenome", {
+            required: "Sobrenome é obrigatório",
+            minLength: { value: 3, message: "Mínimo de 3 caracteres" },
+            maxLength: { value: 20, message: "Máximo de 20 caracteres" },
+          })}
+        />
+        {errors.sobrenome && (
+          <span style={{ color: "red" }}>{errors.sobrenome.message}</span>
+        )}
+        <br />
+        <button>Enviar</button>
+      </form>
